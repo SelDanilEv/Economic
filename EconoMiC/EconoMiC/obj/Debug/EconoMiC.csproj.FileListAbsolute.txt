@@ -1,0 +1,15 @@
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EconoMiC.exe.config
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EconoMiC.exe
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EconoMiC.pdb
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csprojAssemblyReference.cache
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\MainWindow.g.cs
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\App.g.cs
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC_MarkupCompile.cache
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC_MarkupCompile.lref
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\MainWindow.baml
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.g.resources
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.Properties.Resources.resources
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csproj.GenerateResource.cache
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csproj.CoreCompileInputs.cache
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.exe
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.pdb
