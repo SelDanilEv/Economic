@@ -55,6 +55,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Calendar\Calendar.cs" />
+    <Compile Include="Calendar\CalendarHandler.cs" />
+    <Compile Include="Calendar\Day.cs" />
+    <Compile Include="Calendar\Month.cs" />
+    <Compile Include="Calendar\SomeDate.cs" />
+    <Compile Include="Calendar\Year.cs" />
+    <Compile Include="Data\TempData.cs" />
+    <Compile Include="Logic\MoneyController.cs" />
+    <Compile Include="UserAccount.xaml.cs">
+      <DependentUpon>UserAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\Category.cs" />
+    <Compile Include="Elements\Income.cs" />
+    <Compile Include="Elements\Target.cs" />
+    <Compile Include="Users\User.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +82,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,10 +113,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Logic\" />
-    <Folder Include="Users\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

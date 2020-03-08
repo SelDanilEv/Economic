@@ -13,3 +13,6 @@ E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csproj.GenerateResource.cache
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csproj.CoreCompileInputs.cache
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.exe
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.pdb
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\UserAccount.g.cs
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\UserAccount.baml
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\App.baml
