@@ -33,7 +33,21 @@ namespace EconoMiC.Users
         {
             if (!targets.Exists(x => x.TargetName == target.TargetName))
                 targets.Add(target);
-            return false;
+            return true;
+        }
+
+        public bool AddCategory(Category category)
+        {
+            if (!categories.Exists(x => x.CategoryName == category.CategoryName))
+                categories.Add(category);
+            return true;
+        }
+
+        public bool AddIncome(Income income)
+        {
+            if (!incomes.Exists(x => x.IncomeName == income.IncomeName))
+                incomes.Add(income);
+            return true;
         }
     }
 }

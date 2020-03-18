@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EconoMiC"
         mc:Ignorable="d"
-        Title="EconoMiC" Foreground="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowState="Maximized" Height="1800.912" Width="1808.265" Focusable="False" WindowStyle="ToolWindow">
+        Title="EconoMiC" Foreground="{x:Null}" WindowStartupLocation="CenterScreen" Height="1800.912" Width="1808.265" Focusable="False" HorizontalAlignment="Center" VerticalAlignment="Center" WindowState="Maximized">
     <Window.Resources>
         <Color x:Key="Color2">#FF3DB93E</Color>
         <Color x:Key="ColorBlueButton">#FF193890</Color>
@@ -16,7 +16,7 @@
     <Window.Background>
         <SolidColorBrush Color="{DynamicResource BackgroundColor}"/>
     </Window.Background>
-    <Grid>
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Height="547" Width="1189">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>

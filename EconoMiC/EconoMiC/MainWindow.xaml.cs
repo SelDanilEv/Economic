@@ -16,7 +16,7 @@ namespace EconoMiC
             MoneyController moneyController = new MoneyController();
             moneyController.AddMoney(TempData.GetUser("Danil"),13.56);
             UserAccount userAccount = new UserAccount(TempData.GetUser("Danil"));
-            this.Content = userAccount;
+            //this.Content = userAccount;
         }
 
         private void ButSignIn_Click(object sender, RoutedEventArgs e)
@@ -34,6 +34,5 @@ namespace EconoMiC
         {
             //this.Close();
         }
-        
     }
 }

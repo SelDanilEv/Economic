@@ -9,17 +9,22 @@ namespace EconoMiC.Elements
 {
     public class Income
     {
-        public string name;
-        public int day;
-        public month month;
-        public double money;
+        private string _incomeName;
+        private int _day;
+        private month _month;
+        private double _money;
 
-        public Income(string name,double money, int day, int month)
+        public Income(string incomeName, int day, month month, double money)
         {
-            this.name = name;
-            this.day = day;
-            this.month = (month)month;
-            this.money = money;
+            _incomeName = incomeName;
+            _day = day;
+            _month = month;
+            _money = money;
         }
+
+        public string IncomeName { get => _incomeName; set => _incomeName = value; }
+        public int Day { get => _day; set => _day = value; }
+        public month Month { get => _month; set => _month = value; }
+        public double Money { get => _money; set => _money = value; }
     }
 }
