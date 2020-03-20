@@ -61,7 +61,7 @@
     <Compile Include="Calendar\Month.cs" />
     <Compile Include="Calendar\SomeDate.cs" />
     <Compile Include="Calendar\Year.cs" />
-    <Compile Include="Data\TempData.cs" />
+    <Compile Include="Data\Data.cs" />
     <Compile Include="Logic\MoneyController.cs" />
     <Compile Include="UserAccount.xaml.cs">
       <DependentUpon>UserAccount.xaml</DependentUpon>

@@ -5,28 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:EconoMiC"
       mc:Ignorable="d"
-      Title="UserAccount" Width="2665.2" Height="995">
+      Title="UserAccount" Width="2703.6" Height="995">
 
     <Grid Margin="-26,-65,1060.6,10.2" HorizontalAlignment="Right" Width="1631">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <Label Content="UserLogin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="86,95,0,0" FontSize="36" FontFamily="Rockwell Extra Bold"  Name="LabelUserName" AutomationProperties.Name="LabelUserName" Background="{x:Null}" Height="53" Width="227">
+        <Label Content="UserLogin" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="86,84,0,0" FontSize="72" FontFamily="Rockwell Extra Bold"  Name="LabelUserName" AutomationProperties.Name="LabelUserName" Background="{x:Null}" Height="94" Width="471">
             <Label.Foreground>
                 <SolidColorBrush Color="{DynamicResource Color3}"/>
             </Label.Foreground>
         </Label>
-        <Button Content="" HorizontalAlignment="Left" Margin="1436,90,0,0" VerticalAlignment="Top" Width="80" Height="77" Cursor="Arrow" AutomationProperties.Name="button_setting" ClickMode="Press" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle_new}">
+        <Button Content="" HorizontalAlignment="Left" Margin="1356,84,0,0" VerticalAlignment="Top" Width="80" Height="77" Cursor="Arrow" AutomationProperties.Name="button_setting" ClickMode="Press" BorderBrush="{x:Null}" Foreground="{x:Null}" Style="{DynamicResource ButtonStyle_new}">
             <Button.Background>
-                <ImageBrush ImageSource="E:\DesktopApp\EconoMiC\EconoMiC\images\settings_.png"/>
+                <ImageBrush ImageSource="E:\DesktopApp\EconoMiC\EconoMiC\images\settings_clear.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Money" Margin="407,95,1165.4,875" FontSize="36" FontFamily="Rockwell Extra Bold"  x:Name="LabelFreeMoney" AutomationProperties.Name="LabelFreeMoney" Background="{x:Null}" RenderTransformOrigin="1,0.5">
+        <Label Content="Money" Margin="0,95,655.8,902" FontSize="36" FontFamily="Rockwell Extra Bold"  x:Name="LabelFreeMoney" AutomationProperties.Name="LabelFreeMoney" RenderTransformOrigin="1,0.5" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
             <Label.Foreground>
                 <SolidColorBrush Color="{DynamicResource Color3}"/>
             </Label.Foreground>
         </Label>
-        <Label Content="BYN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="556,95,0,0" FontSize="36" FontFamily="Rockwell Extra Bold"  x:Name="LabelCyrrency" AutomationProperties.Name="LabelCurrency" Background="{x:Null}" Height="53" Width="98">
+        <Label Content="BYN" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="856,95,0,0" FontSize="36" FontFamily="Rockwell Extra Bold"  x:Name="LabelCyrrency" AutomationProperties.Name="LabelCurrency" Background="{x:Null}" Height="53" Width="98">
             <Label.Foreground>
                 <SolidColorBrush Color="{DynamicResource Color3}"/>
             </Label.Foreground>
@@ -68,7 +68,7 @@
                 <SolidColorBrush Color="{DynamicResource BackgroundColor}"/>
             </Button.Background>
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="661" Stroke="Black" VerticalAlignment="Top" Width="847" Margin="669,183,0,0" Fill="#FF334360"/>
+        <Rectangle HorizontalAlignment="Left" Height="661" Stroke="Black" VerticalAlignment="Top" Width="815" Margin="669,183,0,0" Fill="#FF334360"/>
 
     </Grid>
 </Page>

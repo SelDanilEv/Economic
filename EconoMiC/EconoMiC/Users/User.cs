@@ -29,6 +29,12 @@ namespace EconoMiC.Users
             this._password = password;
         }
 
+        public User(string login, string password, double money, SomeDate lastVisitDate) : this(login, password)
+        {
+            _money = money;
+            this.lastVisitDate = lastVisitDate;
+        }
+
         public bool AddTarget(Target target)
         {
             if (!targets.Exists(x => x.TargetName == target.TargetName))

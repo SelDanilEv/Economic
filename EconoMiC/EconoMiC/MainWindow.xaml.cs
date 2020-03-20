@@ -13,10 +13,6 @@ namespace EconoMiC
         public MainWindow()
         {
             InitializeComponent();
-            MoneyController moneyController = new MoneyController();
-            moneyController.AddMoney(TempData.GetUser("Danil"),13.56);
-            UserAccount userAccount = new UserAccount(TempData.GetUser("Danil"));
-            //this.Content = userAccount;
         }
 
         private void ButSignIn_Click(object sender, RoutedEventArgs e)
@@ -24,8 +20,9 @@ namespace EconoMiC
             string Login = TextBoxLogin.Text;
             string Password = TextBoxPassword.Password;
 
-            if (TempData.validate(Login,Password)) {
-                UserAccount userAccount = new UserAccount(TempData.GetUser(Login));
+            if (Data.Data.validate(Login,Password))
+            {
+                UserAccount userAccount = new UserAccount(Data.Data.GetUser(Login, Password));
                 this.Content = userAccount;
             }
         }
