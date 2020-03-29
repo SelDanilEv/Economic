@@ -16,3 +16,8 @@ E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.pdb
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\UserAccount.g.cs
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\UserAccount.baml
 E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\App.baml
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EntityFramework.dll
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EntityFramework.SqlServer.dll
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EntityFramework.xml
+E:\DesktopApp\EconoMiC\EconoMiC\bin\Debug\EntityFramework.SqlServer.xml
+E:\DesktopApp\EconoMiC\EconoMiC\obj\Debug\EconoMiC.csproj.CopyComplete

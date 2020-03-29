@@ -25,15 +25,15 @@ namespace EconoMiC.Data
             return dataTable;
         }
 
-        public static bool validate(string log, string pass)   // check login and password
+        public static bool validate(Views.ViewModelMain viewModelMain)   // check login and password
         {
-            DataTable dt_user = Select($"select top(1) id from [dbo].[Users] where LOGIN='{log}' and PASSWORD='{pass}'"); // получаем данные из таблицы
+            DataTable dt_user = Select($"select top(1) id from [dbo].[Users] where LOGIN='{viewModelMain.GetLogin}' and PASSWORD='{viewModelMain.GetPassword}'"); // получаем данные из таблицы
             if (dt_user.Rows.Count == 0)
                 return false;
             return true;
         }
 
-        static public User GetUser(string log,string pass)
+        public static User GetUser(string log,string pass)    
         {
             DataTable dt_user = Select($"select top(1) * from [dbo].[Users] where LOGIN='{log}' and PASSWORD='{pass}'"); // получаем данные из таблицы
             SomeDate someDate = new SomeDate();
@@ -41,14 +41,6 @@ namespace EconoMiC.Data
             return new User(dt_user.Rows[0][1].ToString(),dt_user.Rows[0][2].ToString(),(double)dt_user.Rows[0][3],someDate); // выводим данные
         }
 
-        //public static bool addUser(User user)
-        //{
-        //    if (!accs.Exists(x => x.Login == user.Login))
-        //    {
-        //        accs.Add(user);
-        //        return true;
-        //    }
-        //    return false;
-        //}
+
     }
 }

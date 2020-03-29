@@ -5,24 +5,21 @@ using System.Windows;
 
 namespace EconoMiC
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        Views.ViewModelMain ViewModelMain;
+
         public MainWindow()
         {
             InitializeComponent();
+            ViewModelMain = new Views.ViewModelMain(this);
         }
 
         private void ButSignIn_Click(object sender, RoutedEventArgs e)
         {
-            string Login = TextBoxLogin.Text;
-            string Password = TextBoxPassword.Password;
-
-            if (Data.Data.validate(Login,Password))
+            if (Data.Data.validate(ViewModelMain))
             {
-                UserAccount userAccount = new UserAccount(Data.Data.GetUser(Login, Password));
+                UserAccount userAccount = new UserAccount(Data.Data.GetUser(ViewModelMain.GetLogin,ViewModelMain.GetPassword));
                 this.Content = userAccount;
             }
         }

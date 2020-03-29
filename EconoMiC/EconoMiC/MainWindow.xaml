@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EconoMiC"
         mc:Ignorable="d"
-        Title="EconoMiC" Foreground="{x:Null}" WindowStartupLocation="CenterScreen" Height="470" Width="935.8" Focusable="False" HorizontalAlignment="Center" VerticalAlignment="Center" WindowState="Maximized">
+        Title="EconoMiC"  Foreground="{x:Null}" WindowStartupLocation="CenterScreen" Height="470" Width="935.8" Focusable="False" HorizontalAlignment="Center" VerticalAlignment="Center" WindowState="Maximized">
     <Window.Resources>
         <Color x:Key="Color2">#FF3DB93E</Color>
         <Color x:Key="ColorBlueButton">#FF193890</Color>
@@ -43,7 +43,7 @@
                 <SolidColorBrush Color="{DynamicResource Color2}"/>
             </Button.Foreground>
         </Button>
-        <TextBox  x:Name="TextBoxLogin" HorizontalAlignment="Left" Height="37" Margin="493,89,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.Name="TextBoxLogin" RenderTransformOrigin="0.495,0.517" FontSize="20" UndoLimit="10" MaxLines="1" MaxLength="10" Grid.Column="1" Background="#FF32324B">
+        <TextBox  x:Name="TextBoxLogin" HorizontalAlignment="Left" Height="37" Margin="493,89,0,0" VerticalAlignment="Top" Width="149" AutomationProperties.Name="TextBoxLogin" RenderTransformOrigin="0.495,0.517" FontSize="24" UndoLimit="10" MaxLines="1" MaxLength="10" Grid.Column="1" Background="#FF32324B">
             <TextBox.Foreground>
                 <SolidColorBrush Color="{DynamicResource Color2}"/>
             </TextBox.Foreground>
@@ -53,7 +53,7 @@
                 <SolidColorBrush Color="{DynamicResource Color2}"/>
             </Label.Foreground>
         </Label>
-        <PasswordBox x:Name="TextBoxPassword" HorizontalAlignment="Left" Margin="493,177,0,0" VerticalAlignment="Top" Width="149" Height="37" FontSize="20" Grid.Column="1" Background="#FF32324B">
+        <PasswordBox x:Name="TextBoxPassword" HorizontalAlignment="Left" Margin="493,177,0,0" VerticalAlignment="Top" Width="149" Height="37" FontSize="24" Grid.Column="1" Background="#FF32324B">
             <PasswordBox.Foreground>
                 <SolidColorBrush Color="{DynamicResource Color2}"/>
             </PasswordBox.Foreground>

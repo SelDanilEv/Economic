@@ -10,6 +10,7 @@ namespace EconoMiC.Users
 {
     public class User
     {
+
         private string _login;
         private double _money;
         private string _password;
