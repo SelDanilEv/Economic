@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Economic_v2.Pages.AddOrEditTarget"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Economic_v2"
+      mc:Ignorable="d" 
+      DataContext="{StaticResource AddOrEditTargetsViewModel}"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Height="auto" Width="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Background" Value="{x:Null}" />
+                <Setter Property="Foreground" Value="Firebrick" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}"></Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Width="500">
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:1}">
+            <StackPanel Margin="10 50 0 0" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBox Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Target Name"
+                    Text="{Binding TargetName,Mode=TwoWay}" />
+                <Label  Margin="15 0 0 0" Content="{Binding TargetNameError}" />
+                <TextBox Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Total sum"
+                     Text="{Binding TotalSum,Mode=TwoWay}"/>
+                <Label Margin="15 0 0 0" Content="{Binding TotalSumError}" />
+                <TextBox Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Current sum"
+                     Text="{Binding CurrentSum,Mode=TwoWay}"/>
+                <Label Margin="15 0 0 0" Content="{Binding CurrentSumError}" />
+                <TextBox Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Monthly expenses"
+                     Text="{Binding Spend,Mode=TwoWay}" />
+                <Label Margin="15 0 0 0" Content="{Binding SpendError}" />
+                <DatePicker Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Select Date"
+                        SelectedDate="{Binding TargetTime,Mode=TwoWay}"
+                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <Label Margin="15 0 0 0" Content="{Binding TargetTimeError}" />
+            </StackPanel>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

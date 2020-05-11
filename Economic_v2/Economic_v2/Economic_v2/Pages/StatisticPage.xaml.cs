@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Economic_v2
+namespace Economic_v2.Pages
 {
     /// <summary>
     /// Логика взаимодействия для HomePage.xaml

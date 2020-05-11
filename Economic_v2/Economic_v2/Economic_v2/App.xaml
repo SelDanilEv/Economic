@@ -1,10 +1,30 @@
 ﻿<Application x:Class="Economic_v2.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Economic_v2"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Economic_v2.ViewModels"
+             StartupUri="Windows/LoginWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
+        <local:MainViewModel x:Key="MainViewModel" />
+        
+        <local:LoginViewModel x:Key="LoginViewModel" />
+        
+        <local:SettingPageViewModel x:Key="SettingPageViewModel" />
+        
+        <local:TargetsPageViewModel x:Key="TargetsPageViewModel" />
+        <local:TargetsListViewViewModel x:Key="TargetsListViewViewModel" />
+        <local:AddOrEditTargetsViewModel x:Key="AddOrEditTargetsViewModel" />
+
+        <local:CategoriesPageViewModel x:Key="CategoriesPageViewModel" />
+        <local:CategoriesListViewViewModel x:Key="CategoriesListViewViewModel" />
+        <local:AddOrEditCategoriesViewModel x:Key="AddOrEditCategoriesViewModel" />
+        <ControlTemplate x:Key="CircButtons" TargetType="Button">
+            <Border CornerRadius="50" Width="100" Height="100"  BorderThickness="0">
+                <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="Decor/home.png" />
+                </ContentControl>
+            </Border>
+        </ControlTemplate>
+        <ResourceDictionary x:Key="MaterialDesign">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
