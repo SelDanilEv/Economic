@@ -18,11 +18,10 @@ namespace Economic_v2.Models
         {
         }
 
-        public Category(Category category)
+        public Category(Category category):
+            this(category.CategoryName,category.Spend)
         {
             this.Id = category.Id;
-            this.CategoryName = category.CategoryName;
-            this.Spend = category.Spend;
         }
 
         public Category(string categoryName,  double spend)

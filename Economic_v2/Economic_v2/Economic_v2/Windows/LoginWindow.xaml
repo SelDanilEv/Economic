@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Login" Height="500" Width="350" 
         ResizeMode="NoResize" 
-        Name="TestWindow"
+        Name="LoginWindow"
         WindowStartupLocation="CenterScreen" 
         Resources="{StaticResource MaterialDesign}"
         DataContext="{StaticResource LoginViewModel}"
@@ -58,17 +58,17 @@
         </Grid>
 
         <Button Command="{Binding LogIn}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" 
-                     CommandParameter="{Binding ElementName=TestWindow}" Content="LOGIN" Background="#FF0069C0"/>
+                     CommandParameter="{Binding ElementName=LoginWindow}" Content="LOGIN" Background="#FF0069C0"/>
         <Button Command="{Binding Registrate}" BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Center" 
                 VerticalAlignment="Bottom" Margin="0,25" Height="35">
             <TextBlock TextDecorations="Underline" Foreground="DimGray" FontSize="15" Text="Registration" ></TextBlock>
         </Button>
         <Button ToolTip="CLOSE WINDOW" Command="{Binding CloseWindow, Mode=OneWay}" 
-            CommandParameter="{Binding ElementName=TestWindow}"  Template="{StaticResource CircButtons}"
+            CommandParameter="{Binding ElementName=LoginWindow}"  Template="{StaticResource CircButtons}"
             HorizontalAlignment="Center" Width="100" Height="100" VerticalAlignment="Top" Margin="30">
         </Button>
         <Button  Command="{Binding CloseWindow, Mode=OneWay}" 
-            CommandParameter="{Binding ElementName=TestWindow}" 
+            CommandParameter="{Binding ElementName=LoginWindow}" 
             Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right"
             FontSize="20" BorderThickness="0" Height="40" Width="57">
             <materialDesign:PackIcon Kind="WindowClose" Height="25" Width="25" />

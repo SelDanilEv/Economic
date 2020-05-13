@@ -17,7 +17,8 @@ namespace Economic_v2.DataBaseLayer
         private SuspendedTargetRepository suspendedTargetRepository;
         private AdjustmentContractRepository adjustmentContractRepository;
         private AdjustmentRepository adjustmentRepository;
-        private IncomeRepository incomeRepository;             
+        private IncomeRepository incomeRepository;
+        private TransactionRepository transactionRepository;
 
         public UserRepository Users
         {
@@ -107,6 +108,16 @@ namespace Economic_v2.DataBaseLayer
                 if (incomeRepository == null)
                     incomeRepository = new IncomeRepository(db);
                 return incomeRepository;
+            }
+        }
+
+        public TransactionRepository Transactions
+        {
+            get
+            {
+                if (transactionRepository == null)
+                    transactionRepository = new TransactionRepository(db);
+                return transactionRepository;
             }
         }
 

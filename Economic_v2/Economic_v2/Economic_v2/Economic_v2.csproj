@@ -79,6 +79,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
     <Compile Include="DataBaseLayer\EconoMiCDBContext.cs" />
+    <Compile Include="DataBaseLayer\Models\Transaction.cs" />
     <Compile Include="DataBaseLayer\Repository.cs" />
     <Compile Include="DataBaseLayer\UnitOfWork.cs" />
     <Compile Include="DataBaseLayer\UnitOfWorkSingleton.cs" />
@@ -112,6 +113,10 @@
     <Compile Include="Migrations\202005101021150_TryMirgNew3.designer.cs">
       <DependentUpon>202005101021150_TryMirgNew3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005111945537_And one more migration.cs" />
+    <Compile Include="Migrations\202005111945537_And one more migration.designer.cs">
+      <DependentUpon>202005111945537_And one more migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DataBaseLayer\Models\ActiveTarget.cs" />
     <Compile Include="DataBaseLayer\Models\Adjustment.cs" />
@@ -120,10 +125,11 @@
     <Compile Include="DataBaseLayer\Models\Income.cs" />
     <Compile Include="DataBaseLayer\Models\Node.cs" />
     <Compile Include="DataBaseLayer\Models\OldTarget.cs" />
-    <Compile Include="DataBaseLayer\Models\OneTimeTransaction.cs" />
     <Compile Include="DataBaseLayer\Models\SuspendedTarget.cs" />
+    <Compile Include="Models\IncomesModel.cs" />
     <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\TargetsModel.cs" />
+    <Compile Include="Models\TransactionsModel.cs" />
     <Compile Include="Pages\CategyPage\AddOrEditCategory.xaml.cs">
       <DependentUpon>AddOrEditCategory.xaml</DependentUpon>
     </Compile>
@@ -133,6 +139,15 @@
     <Compile Include="Pages\CategyPage\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\IncomePage\AddOrEditIncome.xaml.cs">
+      <DependentUpon>AddOrEditIncome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IncomePage\IncomesListView.xaml.cs">
+      <DependentUpon>IncomesListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IncomePage\IncomesPage.xaml.cs">
+      <DependentUpon>IncomesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TargetPage\AddOrEditTarget.xaml.cs">
       <DependentUpon>AddOrEditTarget.xaml</DependentUpon>
     </Compile>
@@ -141,9 +156,6 @@
     </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\IncomesPage.xaml.cs">
-      <DependentUpon>IncomesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StatisticPage.xaml.cs">
       <DependentUpon>StatisticPage.xaml</DependentUpon>
@@ -168,6 +180,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\IncomePage\AddOrEditIncome.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\IncomePage\IncomesListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\IncomePage\IncomesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\TargetPage\AddOrEditTarget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -177,10 +201,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\SettingsPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\IncomesPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -196,6 +216,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TransactionPage\AddOrEditTransaction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TransactionPage\TransactionsListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\TransactionPage\TransactionsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,16 +241,31 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builders\TargetBuilder.cs" />
+    <Compile Include="Pages\TransactionPage\AddOrEditTransaction.xaml.cs">
+      <DependentUpon>AddOrEditTransaction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionPage\TransactionsListView.xaml.cs">
+      <DependentUpon>TransactionsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionPage\TransactionsPage.xaml.cs">
+      <DependentUpon>TransactionsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PasswordCoder\PasswordEncoder.cs" />
     <Compile Include="ViewModels\CategoryPage\AddOrEditCategoriesViewModel.cs" />
     <Compile Include="ViewModels\CategoryPage\CategoriesListViewViewModel.cs" />
     <Compile Include="ViewModels\CategoryPage\CategoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\IncomesPage\AddOrEditIncomesViewModel.cs" />
+    <Compile Include="ViewModels\IncomesPage\IncomesListViewViewModel.cs" />
+    <Compile Include="ViewModels\IncomesPage\IncomesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\AddOrEditTargetsViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\TargetsPageViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\TargetsListViewViewModel.cs" />
     <Compile Include="ViewModels\SettingPageViewModel.cs" />
+    <Compile Include="ViewModels\TransactionsPage\AddOrEditTransactionsViewModel.cs" />
+    <Compile Include="ViewModels\TransactionsPage\TransactionsListViewViewModel.cs" />
+    <Compile Include="ViewModels\TransactionsPage\TransactionsPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -263,11 +310,16 @@
     <EmbeddedResource Include="Migrations\202005101021150_TryMirgNew3.resx">
       <DependentUpon>202005101021150_TryMirgNew3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005111945537_And one more migration.resx">
+      <DependentUpon>202005111945537_And one more migration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -290,6 +342,7 @@
   <ItemGroup>
     <Resource Include="HelperRem.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0-ci981\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0-ci981\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

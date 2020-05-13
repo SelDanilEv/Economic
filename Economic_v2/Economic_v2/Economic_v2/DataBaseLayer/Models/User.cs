@@ -23,7 +23,7 @@ namespace Economic_v2.Models
         public List<SuspendedTarget> SuspendedTargets { get; set; }
         public List<Category> Categories { get; set; }
         public List<Income> Incomes{ get; set; }
-        public List<OneTimeTransaction> OneTimeTransactions { get; set; }
+        public List<Transaction> Transactions { get; set; }
         public List<AdjustmentContract> AdjustmentContracts { get; set; }
         public Node Node { get; set; }
 

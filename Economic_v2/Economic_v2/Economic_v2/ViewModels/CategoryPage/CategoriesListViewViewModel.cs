@@ -24,6 +24,8 @@ namespace Economic_v2.ViewModels
 
         public void ReadCategories()   // get actual notes
         {
+            if (MainViewModel.CurrentUser.Categories == null)
+                MainViewModel.CurrentUser.Categories = new List<Category>();
             List<Category> UserCategories = new List<Category>( MainViewModel.CurrentUser.Categories);
            
             while (UserCategories.Count < 7)     //make empty notes to make minimem 10

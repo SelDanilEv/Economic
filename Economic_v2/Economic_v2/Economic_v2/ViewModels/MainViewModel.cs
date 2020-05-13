@@ -69,6 +69,9 @@ namespace Economic_v2.ViewModels
                     case 3:
                         MainUserControl = new IncomesPage();
                         break;
+                    case 4:
+                        MainUserControl = new TransactionsPage();
+                        break;
                     case 5:
                         MainUserControl = new StatisticPage();
                         break;

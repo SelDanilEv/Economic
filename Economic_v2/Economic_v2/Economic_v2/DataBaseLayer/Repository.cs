@@ -29,7 +29,7 @@ namespace Economic_v2.DataBaseLayer
         public List<User> GetAll()
         {
             db.Incomes.Load();
-            db.OneTimeTransactions.Load();
+            db.Transactions.Load();
             db.AdjustmentContracts.Load();
             db.Adjustments.Load();
             db.Categories.Load();
@@ -48,7 +48,7 @@ namespace Economic_v2.DataBaseLayer
         public User Get(string login)
         {
             db.Incomes.Load();
-            db.OneTimeTransactions.Load();
+            db.Transactions.Load();
             db.AdjustmentContracts.Load();
             db.Adjustments.Load();
             db.Categories.Load();
@@ -77,40 +77,40 @@ namespace Economic_v2.DataBaseLayer
         }
     }
 
-    public class OneTimeTransactionRepository : IRepository<OneTimeTransaction>
+    public class TransactionRepository : IRepository<Transaction>
     {
         private EconoMiCDBContext db;
 
-        public OneTimeTransactionRepository(EconoMiCDBContext context)
+        public TransactionRepository(EconoMiCDBContext context)
         {
             this.db = context;
         }
 
-        public List<OneTimeTransaction> GetAll()
+        public List<Transaction> GetAll()
         {
-            return db.OneTimeTransactions.ToList();
+            return db.Transactions.ToList();
         }
 
-        public OneTimeTransaction Get(int id)
+        public Transaction Get(int id)
         {
-            return db.OneTimeTransactions.Find(id);
+            return db.Transactions.Find(id);
         }
 
-        public void Create(OneTimeTransaction OneTimeTransaction)
+        public void Create(Transaction Transaction)
         {
-            db.OneTimeTransactions.Add(OneTimeTransaction);
+            db.Transactions.Add(Transaction);
         }
 
-        public void Update(OneTimeTransaction OneTimeTransaction)
+        public void Update(Transaction Transaction)
         {
-            db.Entry(OneTimeTransaction).State = EntityState.Modified;
+            db.Entry(Transaction).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            OneTimeTransaction OneTimeTransaction = db.OneTimeTransactions.Find(id);
-            if (OneTimeTransaction != null)
-                db.OneTimeTransactions.Remove(OneTimeTransaction);
+            Transaction Transaction = db.Transactions.Find(id);
+            if (Transaction != null)
+                db.Transactions.Remove(Transaction);
         }
     }
 

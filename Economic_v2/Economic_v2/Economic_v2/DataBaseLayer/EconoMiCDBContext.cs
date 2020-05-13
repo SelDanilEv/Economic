@@ -19,7 +19,7 @@ namespace Economic_v2.DataBaseLayer
         public DbSet<OldTarget> OldTargets{ get; set; }
         public DbSet<SuspendedTarget> SuspendedTargets { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<OneTimeTransaction> OneTimeTransactions { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Adjustment> Adjustments { get; set; }
         public DbSet<AdjustmentContract> AdjustmentContracts { get; set; }
     }

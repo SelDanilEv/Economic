@@ -17,6 +17,15 @@
         <local:CategoriesPageViewModel x:Key="CategoriesPageViewModel" />
         <local:CategoriesListViewViewModel x:Key="CategoriesListViewViewModel" />
         <local:AddOrEditCategoriesViewModel x:Key="AddOrEditCategoriesViewModel" />
+
+        <local:IncomesPageViewModel x:Key="IncomesPageViewModel" />
+        <local:IncomesListViewViewModel x:Key="IncomesListViewViewModel" />
+        <local:AddOrEditIncomesViewModel x:Key="AddOrEditIncomesViewModel" />
+ 
+        <local:TransactionsPageViewModel x:Key="TransactionsPageViewModel" />
+        <local:TransactionsListViewViewModel x:Key="TransactionsListViewViewModel" />
+        <local:AddOrEditTransactionsViewModel x:Key="AddOrEditTransactionsViewModel" />
+        
         <ControlTemplate x:Key="CircButtons" TargetType="Button">
             <Border CornerRadius="50" Width="100" Height="100"  BorderThickness="0">
                 <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center">

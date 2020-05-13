@@ -24,6 +24,8 @@ namespace Economic_v2.ViewModels
 
         public void ReadTargets()   // get actual notes
         {
+            if (MainViewModel.CurrentUser.ActiveTargets == null)
+                MainViewModel.CurrentUser.ActiveTargets = new List<ActiveTarget>();
             List<ActiveTarget> UserTargets = MainViewModel.CurrentUser.ActiveTargets;
             List<Target> targets = new List<Target>();
             if (UserTargets != null)

@@ -20,15 +20,17 @@
 
 
 
-Targets Categories
+Targets Categories Incomes Transactions
 
-targets categories
+Categorie Income Transaction
 
-Target Category
+targets categories incomes transaction
+
+Target Category Income 
 	
-target category
+target category income
 
-ActiveCategories Categories
+ActiveCategories Categories Incomes
 
 ActiveCategory Category
 
