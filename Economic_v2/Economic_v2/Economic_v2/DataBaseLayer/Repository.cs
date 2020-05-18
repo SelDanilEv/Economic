@@ -66,17 +66,12 @@ namespace Economic_v2.DataBaseLayer
 
         public User Get(string login)
         {
-            db.Incomes.Load();
             db.Targets.Load();
-            db.Transactions.Load();
-            db.AdjustmentContracts.Load();
-            db.Adjustments.Load();
-            db.Categories.Load();
-            db.Nodes.Load();
-            db.OldTargets.Load();
-            db.SuspendedTargets.Load();
-            db.ActiveTargets.Load();
-            return GetAll().Find(x => x.Login == login);
+            return db.Users.Include(u=>u.Incomes).Include(u=>u.Transactions).
+                Include(u=>u.Categories).Include(u=>u.Note).
+                Include(u=>u.OldTargets).Include(u=>u.SuspendedTargets).
+                Include(u=>u.Statistic).Include(u=>u.ActiveTargets)
+                .ToList().Find(x => x.Login == login);
         }
 
         public void Create(User User)

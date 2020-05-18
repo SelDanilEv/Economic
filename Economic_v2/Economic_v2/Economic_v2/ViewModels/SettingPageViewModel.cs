@@ -33,7 +33,7 @@ namespace Economic_v2.ViewModels
             {
                 OldPasswordError = NewPasswordError = ConfirmNewPasswordError =
                    NewTotalMoneyError = MailError = null;
-
+                _newTotalMoney = null;
                 NotifyPropertyChanged("ConfirmNewPasswordError");
                 NotifyPropertyChanged("NewPasswordError");
                 NotifyPropertyChanged("OldPasswordError");
@@ -41,6 +41,7 @@ namespace Economic_v2.ViewModels
                 NotifyPropertyChanged("MailError");
 
                 NotifyPropertyChanged("OldTotalMoney");
+                NotifyPropertyChanged("NewTotalMoney");
                 NotifyPropertyChanged("OldMail");
             })).Start();
         }
@@ -297,13 +298,13 @@ namespace Economic_v2.ViewModels
             {
                 (new Task(() =>
                 {
-                    OldPassword = NewPassword = ConfirmNewPassword = "";
-                    NotifyPropertyChanged("ConfirmNewPassword");
-                    NotifyPropertyChanged("NewPassword");
-                    NotifyPropertyChanged("OldPassword");
                     MainViewModel.GetContext.CurrentUser.Password = PasswordCoder.PasswordCoder.GetHash(_newPassword);
                     UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.GetContext.CurrentUser);
                     UnitOfWorkSingleton.GetUnitOfWork.Save();
+                    _oldPassword = _newPassword = _confirmNewPassword = "";
+                    NotifyPropertyChanged("ConfirmNewPassword");
+                    NotifyPropertyChanged("NewPassword");
+                    NotifyPropertyChanged("OldPassword");
                 })).Start();
             }
             NotifyPropertyChanged("ConfirmNewPasswordError");

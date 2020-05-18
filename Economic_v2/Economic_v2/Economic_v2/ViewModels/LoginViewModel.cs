@@ -1,18 +1,15 @@
 ﻿using Economic_v2.DataBaseLayer;
 using Economic_v2.Commands;
 using System.Windows.Input;
-using System.Collections.Generic;
 using Economic_v2.Models;
 using System.Windows;
-using System;
 using System.Threading;
-using Economic_v2.Windows;
-using Economic_v2.Help;
 using System.Threading.Tasks;
-using Economic_v2.PasswordCoder;
-using Economic_v2.Pages;
-using Economic_v2.Services;
 using System.Windows.Controls;
+using Economic_v2.Pages;
+using Economic_v2.Windows;
+using System;
+using Economic_v2.Services;
 
 namespace Economic_v2.ViewModels
 {
@@ -39,6 +36,16 @@ namespace Economic_v2.ViewModels
         }
 
         #region View   
+        public bool IsPasswordEnable
+        {
+            get
+            {
+                if (PageMode == Mode.ReestablishPassword)
+                    return false;
+                return true;
+            }
+        }
+
         enum Mode
         {
             LogIn = 0,
@@ -60,7 +67,7 @@ namespace Economic_v2.ViewModels
                 switch (_pageMode)
                 {
                     case Mode.LogIn:
-                        HeaderText = "Welcome";
+                        HeaderText = "LOG IN";
                         ConfirmButtonText = "Log in";
                         Registrate_LoginButtonText = "Registration";
                         ConfirmButton = new RelayCommand<Window>(OnLogin);
@@ -91,6 +98,7 @@ namespace Economic_v2.ViewModels
                 NotifyPropertyChanged("ConfirmButton");
                 NotifyPropertyChanged("Registrate_LoginButton");
                 NotifyPropertyChanged("ReestablishPassword");
+                NotifyPropertyChanged("IsPasswordEnable");
             }
         }
 
@@ -110,12 +118,12 @@ namespace Economic_v2.ViewModels
             }
             set
             {
-                _login = value;
-                if (validateLogin())
+                if (validateLogin(value))
                 {
                     GetUserByLogin(value);
                 }
                 NotifyPropertyChanged("LoginError");
+                _login = value;
             }
         }
         public string Password
@@ -137,33 +145,42 @@ namespace Economic_v2.ViewModels
 
         public string LoadVis { get; set; }
 
-
         public void ClearFields()
         {
-            _login = _password = PasswordError = LoginError = null;
+            new Task(() =>
+            {
+                _login = _password = "";
 
-            NotifyPropertyChanged("Login");
-            NotifyPropertyChanged("Password");
-            NotifyPropertyChanged("PasswordError");
-            NotifyPropertyChanged("LoginError");
+                NotifyPropertyChanged("Login");
+                NotifyPropertyChanged("Password");
+                NotifyPropertyChanged("PasswordError");
+                NotifyPropertyChanged("LoginError");
+            }).Start();
+
+            Application.Current.Dispatcher.Invoke((Action)delegate
+            {
+                if (pb != null)
+                    pb.Password = "";
+            });
+            PasswordError = LoginError = null;
         }
         #endregion
 
         #region Validation
-        private bool validateLogin()
+        private bool validateLogin(string login)
         {
-            if (_login == "")
+            if (login == "")
             {
                 LoginError = "Login is empty";
                 return false;
             }
 
-            if (_login.Length < 2)
+            if (login.Length < 2)
             {
                 LoginError = "Login too short";
                 return false;
             }
-            if (_login[0] == ' ')
+            if (login[0] == ' ')
             {
                 LoginError = "Login mustn't starts with space";
                 return false;
@@ -171,6 +188,21 @@ namespace Economic_v2.ViewModels
 
             LoginError = null;
             return true;
+        }
+
+        private bool validateEmail()
+        {
+            if (TargetUser != null)
+            {
+                if (TargetUser.Email != null && TargetUser.Email != "")
+                {
+                    LoginError = null;
+                    return true;
+                }
+            }
+
+            LoginError = "Not email binding";
+            return false;
         }
 
         private bool validatePassword()
@@ -190,10 +222,16 @@ namespace Economic_v2.ViewModels
             return true;
         }
 
-
+        private bool checkPasswords(string password)
+        {
+            if (TargetUser != null)
+                if (PasswordCoder.PasswordCoder.GetHash(password) == TargetUser.Password)
+                    return true;
+            return false;
+        }
         #endregion
 
-        #region Get User region
+        #region Get Check User region
         private User TargetUser = null;
         private void GetUserByLogin(string login)
         {
@@ -201,8 +239,8 @@ namespace Economic_v2.ViewModels
             {
                 if (CheckConnectionTask.Status == TaskStatus.Running)
                 {
-                    time = 200;
-                    Thread.Sleep(100);
+                    time = 202;
+                    Thread.Sleep(50);
                 }
                 time = 0;
                 TargetUser = null;
@@ -217,32 +255,74 @@ namespace Economic_v2.ViewModels
         {
             CheckConnectionTask = new Task(() =>
             {
-                LoadVis = "Visible";
-                NotifyPropertyChanged("LoadVis");
+                TurnOnLoadAnimation();
 
-                while (time < 50 && TargetUser == null)
+                while (time < 200 && TargetUser == null)
                 {
-                    Thread.Sleep(100);
+                    Thread.Sleep(50);
                     time++;
                 }
-                LoadVis = "Hidden";
-                NotifyPropertyChanged("LoadVis");
 
-                switch (TargetUser.Id)
+                TurnOffLoadAnimation();
+
+                switch (PageMode)
                 {
-                    case 0:
-                        LoginError = "Login not founded";
-                        NotifyPropertyChanged("LoginError");
-                        break;
-                    case -1:
-                        LoginError = "Connection error";
-                        NotifyPropertyChanged("LoginError");
-                        break;
-                    default:
-                        if (time == 50)
+                    case Mode.LogIn:
+                    case Mode.ReestablishPassword:
+                        if (TargetUser == null)
                         {
-                            LoginError = "No connection";
+                            LoginError = "Connection error";
                             NotifyPropertyChanged("LoginError");
+                        }
+                        else
+                        {
+                            switch (TargetUser.Id)
+                            {
+                                case 0:
+                                    LoginError = "Login not founded";
+                                    NotifyPropertyChanged("LoginError");
+                                    break;
+                                case -1:
+                                    LoginError = "Connection error";
+                                    NotifyPropertyChanged("LoginError");
+                                    break;
+                                default:
+                                    if (time == 200)
+                                    {
+                                        LoginError = "No connection";
+                                        NotifyPropertyChanged("LoginError");
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
+                    case Mode.Registrate:
+                        if (TargetUser == null)
+                        {
+                            LoginError = "Connection error";
+                            NotifyPropertyChanged("LoginError");
+                        }
+                        else
+                        {
+                            switch (TargetUser.Id)
+                            {
+                                case -1:
+                                    LoginError = "Connection error";
+                                    NotifyPropertyChanged("LoginError");
+                                    break;
+                                default:
+                                    if (time == 200)
+                                    {
+                                        LoginError = "No connection";
+                                        NotifyPropertyChanged("LoginError");
+                                    }
+                                    if (TargetUser.Id > 0)
+                                    {
+                                        LoginError = "Login already exist";
+                                        NotifyPropertyChanged("LoginError");
+                                    }
+                                    break;
+                            }
                         }
                         break;
                 }
@@ -294,6 +374,63 @@ namespace Economic_v2.ViewModels
 
         #endregion
 
+        #region only chec connect
+        public void CheckConnectionOnly()
+        {
+            new Task(() =>
+            {
+                User tmp = UnitOfWorkSingleton.GetUnitOfWork.Users.GetPure("");
+                while (time < 200 && tmp == null)
+                {
+                    Thread.Sleep(50);
+                    time++;
+                }
+
+                if (tmp == null)
+                {
+                    LoginError = "Connection error (1)";
+                    NotifyPropertyChanged("LoginError");
+                }
+                else
+                {
+                    switch (tmp.Id)
+                    {
+                        case -1:
+                            LoginError = "Connection error (2)";
+                            NotifyPropertyChanged("LoginError");
+                            break;
+                        default:
+                            if (time == 200)
+                            {
+                                LoginError = "No connection";
+                                NotifyPropertyChanged("LoginError");
+                            }
+                            break;
+                    }
+                }
+            }).Start();
+        }
+        #endregion
+
+        #region Animation
+        private void TurnOnLoadAnimation()
+        {
+            new Task(() =>
+            {
+                LoadVis = "Visible";
+                NotifyPropertyChanged("LoadVis");
+            }).Start();
+        }
+
+        private void TurnOffLoadAnimation()
+        {
+            new Task(() =>
+            {
+                LoadVis = "Hidden";
+                NotifyPropertyChanged("LoadVis");
+            }).Start();
+        }
+        #endregion
 
         #region ImplementationCommand
         private void OnCloseWindow(Window window)
@@ -302,39 +439,200 @@ namespace Economic_v2.ViewModels
             {
                 window.Close();
             }
+            if (MainWindow != null)
+            {
+                MainWindow.Close();
+            }
         }
 
+        #region Log In
+        private bool isTry;
         public void OnLogin(Window loginWindow)
         {
             if (LoginWindow == null)          //initialization login window
                 LoginWindow = loginWindow;
+            TurnOnLoadAnimation();
+            if (!isTry)
+            {
+                new Task(() =>
+                {
+                    if (TargetUser != null && TargetUser.Id > 0 && validateLogin(_login) && validatePassword())
+                    {
+                        DoCheckValidateAccount();
+                    }
+                    else
+                    {
+                        if (validatePassword())
+                        {
+                            new Task(() =>
+                            {
+                                isTry = true;
+                                bool OK = false;
+                                for (int i = 0; i < 30; i++)
+                                {
+                                    if (TargetUser != null && TargetUser.Id > 0 && validateLogin(_login) && validatePassword())
+                                    {
+                                        OK = true;
+                                        DoCheckValidateAccount();
+                                        isTry = false;
+                                        break;
+                                    }
+                                    Thread.Sleep(100);
+                                }
+                                isTry = false;
+                                if (!OK)
+                                {
+                                    LoginError = "Please try again";
+                                    NotifyPropertyChanged("LoginError");
+                                }
+                            }).Start();
+                        }
+                        else
+                        {
+                            TurnOffLoadAnimation();
+                        }
+                    }
+                }).Start();
+            }
         }
+        public void DoCheckValidateAccount()
+        {
+            if (checkPasswords(_password))
+            {
+                HeaderText = "Welcome";
+                NotifyPropertyChanged("HeaderText");
+                HelpMethodWait();
+            }
+            else
+            {
+                PasswordError = "Wrong password";
+                NotifyPropertyChanged("PasswordError");
+            }
+        }
+        public void HelpMethodWait()
+        {
+            new Task(() =>
+            {
+                Thread.Sleep(1060);
+                OpenAccount();
+                isTry = false;
+            }).Start();
+        }
+        public void OpenAccount()
+        {
+            Application.Current.Dispatcher.Invoke((Action)delegate
+            {
+                if (MainWindow == null)
+                    MainWindow = new MainWindow();
+
+                if (MainViewModel.mainWindow == null)               //set static properties in main view-model
+                {
+                    MainViewModel.loginWindow = LoginWindow;
+                    MainViewModel.mainWindow = MainWindow;
+                }
+
+                MainViewModel.GetContext.CurrentUser =
+                    UnitOfWorkSingleton.GetUnitOfWork.Users.Get(TargetUser.Login);
+
+                MainViewModel.GetContext._pages[0] = new HomePage();
+                MainViewModel.GetContext._pages[1] = new TargetsPage();
+                MainViewModel.GetContext._pages[2] = new CategoriesPage();
+                MainViewModel.GetContext._pages[3] = new IncomesPage();
+                MainViewModel.GetContext._pages[4] = new TransactionsPage();
+                MainViewModel.GetContext._pages[5] = new StatisticPage();
+                MainViewModel.GetContext._pages[6] = new SettingsPage();
+                MainViewModel.GetContext._pages[7] = new NotePage();
+
+                MainViewModel.GetContext.UpdateInfo();
+                MainViewModel.GetContext.SelectedPageIndex = 0;
+                MainViewModel.GetContext.OnUpdateMainWindow();
+
+                ChangeOnLogIn();
+
+                LoginWindow.Hide();
+                MainWindow.Show();
+            });
+            TurnOffLoadAnimation();
+        }
+        #endregion
+
 
         public void OnRegistrate(Window loginWindow)
         {
-            if (LoginWindow == null)          //initialization login window
-                LoginWindow = loginWindow;
+            new Task(() =>
+            {
+                if (TargetUser != null && TargetUser.Id == 0 && validateLogin(_login) && validatePassword())
+                {
+                    CreateNewUser();
+                }
+            }).Start();
         }
+
+        private void CreateNewUser()
+        {
+            UnitOfWorkSingleton.GetUnitOfWork.Users.Create(new User
+                (_login, PasswordCoder.PasswordCoder.GetHash(_password), 0, DateTime.Now));
+            UnitOfWorkSingleton.GetUnitOfWork.Save();
+            HeaderText = "Hi " + _login;
+            NotifyPropertyChanged("HeaderText");
+            Thread.Sleep(2000);
+            new Task(() =>
+            {
+                ChangeOnLogIn();
+            }).Start();
+        }
+
 
         public void OnReestablish(Window loginWindow)
         {
-            if (LoginWindow == null)          //initialization login window
-                LoginWindow = loginWindow;
+            new Task(() =>
+            {
+                if (TargetUser != null && TargetUser.Id > 0 && validateLogin(_login)&&validateEmail())
+                {
+                    SendEmail();
+                }
+                else
+                {
+                    NotifyPropertyChanged("LoginError");
+                }
+            }).Start();
         }
+
+        private void SendEmail()
+        {
+            string genRandPassword = RandomGenerator.GetRandomString(6);
+            TargetUser.Password = PasswordCoder.PasswordCoder.GetHash(genRandPassword);
+            MailsService.SendEmailAsync(TargetUser.Email, "Reestablish Password","EconoMic",
+                "Hi user. Your new password for "+ TargetUser.Login+" is :"+ genRandPassword+"!\n"+
+                "Thanks for using my app!\n\t\t(SD)");
+            HeaderText = "Check email";
+            NotifyPropertyChanged("HeaderText");
+            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(TargetUser);
+            UnitOfWorkSingleton.GetUnitOfWork.Save();
+            Thread.Sleep(2000);
+            new Task(() =>
+            {
+                ChangeOnLogIn();
+            }).Start();
+        }
+
 
         public void ChangeOnRegistration()
         {
             PageMode = Mode.Registrate;
+            ClearFields();
         }
 
         public void ChangeOnLogIn()
         {
             PageMode = Mode.LogIn;
+            ClearFields();
         }
 
         public void ChangeOnReestablishPassword()
         {
             PageMode = Mode.ReestablishPassword;
+            ClearFields();
         }
 
 

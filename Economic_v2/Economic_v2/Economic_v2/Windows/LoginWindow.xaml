@@ -34,7 +34,7 @@
         <Grid VerticalAlignment="Bottom" Margin="35,80" Height="240">
             <Label Content="{Binding HeaderText}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="#FF332A8B" FontSize="28"/>
             <StackPanel VerticalAlignment="Center" Margin="15">
-                <TextBox Text="{Binding Login,Mode=OneWayToSource}" materialDesign:HintAssist.Hint="LOGIN" 
+                <TextBox Text="{Binding Login,Mode=TwoWay}" materialDesign:HintAssist.Hint="LOGIN" 
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines"
                          FontSize="20" Foreground="DimGray"/>
                 <Label Content="{Binding LoginError}" Margin="0,0,-0.4,3" HorizontalAlignment="Right" FontSize="13" 
@@ -43,7 +43,7 @@
                     <TextBox IsTabStop="False" Margin="0 44 0 0" Height="10"/>
                     <PasswordBox x:Name="pwbox" PasswordChar="$" BorderThickness="0"  materialDesign:HintAssist.Hint="PASSWORD" 
                          Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" 
-                                 FontSize="20" Foreground="DimGray" >
+                                 FontSize="20" Foreground="DimGray" IsEnabled="{Binding IsPasswordEnable}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged" >
                                 <i:InvokeCommandAction Command="{Binding PasswordChangedCommand }" 
