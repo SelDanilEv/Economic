@@ -17,16 +17,18 @@ namespace Economic_v2.ViewModels
 {
     public class IncomesListViewViewModel : ViewModelBase
     {
+
         public IncomesListViewViewModel()
         {
 
         }
 
+
         public void ReadIncomes()   // get actual notes
         {
-            if (MainViewModel.CurrentUser.Incomes == null)
-                MainViewModel.CurrentUser.Incomes = new List<Income>();
-            List<Income> UserIncomes = new List<Income>( MainViewModel.CurrentUser.Incomes);
+            if (MainViewModel.GetContext.CurrentUser.Incomes == null)
+                MainViewModel.GetContext.CurrentUser.Incomes = new List<Income>();
+            List<Income> UserIncomes = new List<Income>( MainViewModel.GetContext.CurrentUser.Incomes);
            
             while (UserIncomes.Count < 7)     //make empty notes to make minimem 10
             {
@@ -36,6 +38,12 @@ namespace Economic_v2.ViewModels
         }
 
         #region View
+
+        public void NotifyIncomeList()
+        {
+            NotifyPropertyChanged("IncomesObs");
+        }
+
         public ObservableCollection<Income> IncomesObs
         {
             get
@@ -81,9 +89,9 @@ namespace Economic_v2.ViewModels
         #region ImplementationCommand
         public void OnDeleteIncome(Income target)             //call via context
         {
-            MainViewModel.CurrentUser.Incomes.RemoveAll(
+            MainViewModel.GetContext.CurrentUser.Incomes.RemoveAll(
                 x => x.Id == target.Id);
-            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.CurrentUser);
+            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.GetContext.CurrentUser);
             UnitOfWorkSingleton.GetUnitOfWork.Save();
             NotifyPropertyChanged("IncomesObs");
         }

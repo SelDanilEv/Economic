@@ -25,7 +25,7 @@ namespace Economic_v2.ViewModels
         }
 
         #region Controls
-        private UserControl userControl = new TargetsListView();       //alterable usercontrol
+        private UserControl userControl;       //alterable usercontrol
 
 
         public UserControl TargetPageControl        //handler alterable usercontrol
@@ -36,7 +36,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmTargetCommand = new Command(OnConfirmCreateOrEditTarget);
                     EditOrCancelTargetCommand = new Command(OnCancelCreateOrEditTarget);
-                    userControl = new AddOrEditTarget();
+                    userControl = Model.AddOrEditView;
                     _editTargetButton = "Cancel";
                     _createTargetButton = "Confirm";
                 }
@@ -44,7 +44,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmTargetCommand = new Command(OnCreateTarget);
                     EditOrCancelTargetCommand = new Command(OnEditTarget);
-                    userControl = new TargetsListView();
+                    userControl = Model.ListView;
                     _createTargetButton = "Create Target";
                     _editTargetButton = "Edit Target";
                 }
@@ -238,6 +238,7 @@ namespace Economic_v2.ViewModels
 
         private void OnCreateTarget()           //just turn on create user control
         {
+            new Task(() => Model.AddOrEditContext.Initial()).Start();
             ChangeFlag();
         }
 
@@ -245,7 +246,7 @@ namespace Economic_v2.ViewModels
         {
             if (Model.AddOrEditContext.GetTarget != null)
             {
-                Model.ConfirmButton(IsEdit);
+                Model.ConfirmButton(IsEdit,Model.ListContext.Mode);
                 IsEdit = false;
                 ChangeFlag();
             }
@@ -256,15 +257,15 @@ namespace Economic_v2.ViewModels
         {
             if (IsSelectedTarget)
             {
-                Model.AddOrEditContext.ClearFields = true;
                 IsEdit = true;
                 ChangeFlag();
+                new Task(() => Model.AddOrEditContext.Initial()).Start();
             }
         }
 
         private void OnCancelCreateOrEditTarget()               //if click cancel
         {
-            Model.AddOrEditContext.ClearFields = true;
+            new Task(() => Model.AddOrEditContext.Initial()).Start();
             IsEdit = false;
             ChangeFlag();
         }
@@ -278,6 +279,8 @@ namespace Economic_v2.ViewModels
                     return;
                 }
             }
+            if (SelectedTarget.Id == 0)
+                return;
             if (IsSelectedTarget)
             {
                 if (DismissButtonProgress > 0)
@@ -287,6 +290,7 @@ namespace Economic_v2.ViewModels
                     Thread.Sleep(50);
                 }
 
+                Model.deleteMode = Model.ListContext.Mode;
                 Model.DeletedTarget = SelectedTarget;
                 Model.DismissDelete = false;
                 RunDismissProgress();

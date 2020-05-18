@@ -12,31 +12,52 @@ namespace Economic_v2.Models
 {
     public class CategoriesModel
     {
-        object[] DataContexts = new object[3];         //here data context all controls where was Category
+        static object[] DataContexts = new object[3];         //here data context all controls where was Category
+        object[] Views = new object[3];         //here Views
         UnitOfWork Data = UnitOfWorkSingleton.GetUnitOfWork;
 
         public CategoriesModel(object context)
         {
-            DataContexts[0] = (new AddOrEditCategory()).DataContext;
-            DataContexts[1] = (new CategoriesListView()).DataContext;
+            Views[0] = new AddOrEditCategory();
+            Views[1] = new CategoriesListView();
+            DataContexts[0] = ((AddOrEditCategory)Views[0]).DataContext;
+            DataContexts[1] = ((CategoriesListView)Views[1]).DataContext;
             DataContexts[2] = context;
         }
 
 
+
         #region Contexts
-        public AddOrEditCategoriesViewModel AddOrEditContext
+        public static AddOrEditCategoriesViewModel AddOrEditContext
         {
             get => (AddOrEditCategoriesViewModel)DataContexts[0];
         }
 
-        public CategoriesListViewViewModel ListContext
+        public static CategoriesListViewViewModel ListContext
         {
             get => (CategoriesListViewViewModel)DataContexts[1];
         }
 
-        public CategoriesPageViewModel PageContext
+        public static CategoriesPageViewModel PageContext
         {
             get => (CategoriesPageViewModel)DataContexts[2];
+        }
+        #endregion
+
+        #region Views
+        public AddOrEditCategory AddOrEditView
+        {
+            get => (AddOrEditCategory)Views[0];
+        }
+
+        public CategoriesListView ListView
+        {
+            get => (CategoriesListView)Views[1];
+        }
+
+        public CategoriesPage PageView
+        {
+            get => (CategoriesPage)Views[2];
         }
         #endregion
 
@@ -60,28 +81,34 @@ namespace Economic_v2.Models
         {
             new Task(() =>
             {
-                if (MainViewModel.CurrentUser.Categories == null)  //if current not any note
+                if (MainViewModel.GetContext.CurrentUser.Categories == null)  //if current not any note
                 {
-                    MainViewModel.CurrentUser.Categories = new List<Category>();
+                    MainViewModel.GetContext.CurrentUser.Categories = new List<Category>();
                 }
-                Category category = AddOrEditContext.GetCategory;  //convert to needed type
+                Category category = AddOrEditContext.GetCategory;
                 if (isEdit)
                 {
                     try         //if edit just replace
                     {
-                        MainViewModel.CurrentUser.Categories[MainViewModel.
+                        MainViewModel.GetContext.CurrentUser.Categories[MainViewModel.GetContext.
                             CurrentUser.Categories.FindIndex(x => x.Id == category.Id)] = category;
                     }
                     catch    //if replace error just make new
                     {
-                        MainViewModel.CurrentUser.Categories.Add(category);
+                        MainViewModel.GetContext.CurrentUser.Categories.Add(category);
                     }
                 }
                 else                //make new
                 {
-                    MainViewModel.CurrentUser.Categories.Add(category);
+                    MainViewModel.GetContext.CurrentUser.Categories.Add(category);
                 }
-                Data.Users.Update(MainViewModel.CurrentUser);
+
+                ListContext.NotifyCategoryList();
+
+                if (StatisticViewModel.GetContext != null)
+                    StatisticViewModel.GetContext.MakeCalculate();
+
+                Data.Users.Update(MainViewModel.GetContext.CurrentUser);
                 Data.Save();
             }).Start();
         }

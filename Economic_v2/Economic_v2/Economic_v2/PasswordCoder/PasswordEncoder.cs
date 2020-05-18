@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Economic_v2.PasswordCoder
 {
-    internal class PasswordEncoder
+    internal class PasswordCoder
     {
         public static string GetHash(string password)
         {

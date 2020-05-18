@@ -43,9 +43,10 @@ namespace Economic_v2.ViewModels
                 }
             }
 
+            NotifyPropertyChanged("CategoryName");
+            NotifyPropertyChanged("Spend");
             NotifyPropertyChanged("CategoryNameError");
             NotifyPropertyChanged("SpendError");
-            ClearFields = false;
         }
 
         public void IfCreate()
@@ -68,7 +69,6 @@ namespace Economic_v2.ViewModels
         #endregion
 
         #region View
-        public bool ClearFields = false;
 
         private string _categoryName;
         public string CategoryNameError { get; set; }
@@ -76,8 +76,6 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                if (ClearFields)       //if need clear
-                    new Task(() => Initial()).Start();
                 return _categoryName;
             }
             set
@@ -188,7 +186,6 @@ namespace Economic_v2.ViewModels
             {
                 if (SuccessfulValidation)
                 {
-                    ClearFields = true;
                     return ReturnedCategory;
                 }
                 return null;

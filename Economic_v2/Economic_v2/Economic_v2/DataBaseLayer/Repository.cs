@@ -29,14 +29,14 @@ namespace Economic_v2.DataBaseLayer
         public List<User> GetAll()
         {
             db.Incomes.Load();
+            db.Targets.Load();
             db.Transactions.Load();
-            db.AdjustmentContracts.Load();
-            db.Adjustments.Load();
             db.Categories.Load();
             db.Nodes.Load();
             db.OldTargets.Load();
             db.SuspendedTargets.Load();
             db.ActiveTargets.Load();
+            db.Statistics.Load();
             return db.Users.ToList();
         }
 
@@ -45,9 +45,29 @@ namespace Economic_v2.DataBaseLayer
             return db.Users.Find(id);
         }
 
+        public User GetPure(string login)
+        {
+            User user = null;
+            try
+            {
+                user = db.Users.ToList().Find(x => x.Login == login);
+            }
+            catch
+            {
+                user = new User() { Id = -1 };
+            }
+            finally
+            {
+                if (user == null)
+                    user = new User() { Id = 0 };
+            }
+            return user;
+        }
+
         public User Get(string login)
         {
             db.Incomes.Load();
+            db.Targets.Load();
             db.Transactions.Load();
             db.AdjustmentContracts.Load();
             db.Adjustments.Load();
@@ -56,7 +76,7 @@ namespace Economic_v2.DataBaseLayer
             db.OldTargets.Load();
             db.SuspendedTargets.Load();
             db.ActiveTargets.Load();
-            return GetAll().Find(x=>x.Login == login);
+            return GetAll().Find(x => x.Login == login);
         }
 
         public void Create(User User)
@@ -74,6 +94,51 @@ namespace Economic_v2.DataBaseLayer
             User User = db.Users.Find(id);
             if (User != null)
                 db.Users.Remove(User);
+        }
+    }
+
+    public class StatisticRepository : IRepository<Statistic>
+    {
+        private EconoMiCDBContext db;
+
+        public StatisticRepository(EconoMiCDBContext context)
+        {
+            this.db = context;
+        }
+
+        public List<Statistic> GetAll()
+        {
+            db.Incomes.Load();
+            db.Transactions.Load();
+            db.Categories.Load();
+            db.Nodes.Load();
+            db.OldTargets.Load();
+            db.SuspendedTargets.Load();
+            db.ActiveTargets.Load();
+            db.Statistics.Load();
+            return db.Statistics.ToList();
+        }
+
+        public Statistic Get(int id)
+        {
+            return db.Statistics.Find(id);
+        }
+
+        public void Create(Statistic Statistic)
+        {
+            db.Statistics.Add(Statistic);
+        }
+
+        public void Update(Statistic Statistic)
+        {
+            db.Entry(Statistic).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            Statistic Statistic = db.Statistics.Find(id);
+            if (Statistic != null)
+                db.Statistics.Remove(Statistic);
         }
     }
 
@@ -114,7 +179,7 @@ namespace Economic_v2.DataBaseLayer
         }
     }
 
-    public class NodeRepository : IRepository<Node>
+    public class NodeRepository : IRepository<Note>
     {
         private EconoMiCDBContext db;
 
@@ -123,31 +188,68 @@ namespace Economic_v2.DataBaseLayer
             this.db = context;
         }
 
-        public List<Node> GetAll()
+        public List<Note> GetAll()
         {
             return db.Nodes.ToList();
         }
 
-        public Node Get(int id)
+        public Note Get(int id)
         {
             return db.Nodes.Find(id);
         }
 
-        public void Create(Node Node)
+        public void Create(Note Node)
         {
             db.Nodes.Add(Node);
         }
 
-        public void Update(Node Node)
+        public void Update(Note Node)
         {
             db.Entry(Node).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            Node Node = db.Nodes.Find(id);
+            Note Node = db.Nodes.Find(id);
             if (Node != null)
                 db.Nodes.Remove(Node);
+        }
+    }
+
+    public class TipRepository : IRepository<Tip>
+    {
+        private EconoMiCDBContext db;
+
+        public TipRepository(EconoMiCDBContext context)
+        {
+            this.db = context;
+        }
+
+        public List<Tip> GetAll()
+        {
+            return db.Tips.ToList();
+        }
+
+        public Tip Get(int id)
+        {
+            return db.Tips.Find(id);
+        }
+
+        public void Create(Tip Tip)
+        {
+            db.Tips.Add(Tip);
+        }
+
+        public void Update(Tip Tip)
+        {
+            db.Entry(Tip).State = EntityState.Modified;
+        }
+
+        public void Delete(int id)
+        {
+            Tip Tip = db.Tips.Find(id);
+            if (Tip != null)
+                db.Tips.Remove(Tip);
         }
     }
 

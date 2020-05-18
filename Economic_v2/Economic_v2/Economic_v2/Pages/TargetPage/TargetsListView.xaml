@@ -23,9 +23,9 @@
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:1}">
             <StackPanel Margin="10 0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <RadioButton Margin="4" Content="Active" />
-                    <RadioButton Margin="4" Content="Suspended" />
-                    <RadioButton Margin="4" Content="Old" />
+                    <RadioButton Margin="4" IsChecked="{Binding ActiveFlag,Mode=TwoWay}" Content="Active" />
+                    <RadioButton Margin="4" IsChecked="{Binding SuspendedFlag,Mode=TwoWay}" Content="Suspended" />
+                    <RadioButton Margin="4" IsChecked="{Binding OldFlag,Mode=TwoWay}" Content="Finished" />
                 </StackPanel>
                 <ListView MaxWidth="500" FontSize="15" MaxHeight="400" SelectedItem="{Binding SelectedTarget}" ItemsSource="{Binding TargetsObs}">
                     <ListView.View>

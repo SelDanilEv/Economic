@@ -21,15 +21,15 @@
     </UserControl.Resources>
     <Grid Width="500" Margin="5">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:1}">
-                <ListView FontSize="16" Margin="20 40" MaxWidth="500" MaxHeight="400" SelectedItem="{Binding SelectedTransaction}" ItemsSource="{Binding TransactionsObs}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Transaction name" DisplayMemberBinding="{Binding TransactionName}" />
+            <ListView FontSize="16" Margin="20 40" MaxWidth="500" MaxHeight="400" SelectedItem="{Binding SelectedTransaction}" ItemsSource="{Binding TransactionsObs}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Transaction name" DisplayMemberBinding="{Binding TransactionName}" />
                         <GridViewColumn Header="Transaction cost" DisplayMemberBinding="{Binding Spend}" />
                         <GridViewColumn Header="Transaction date" DisplayMemberBinding="{Binding ShortDate}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </materialDesign:TransitioningContent>
     </Grid>
 </UserControl>

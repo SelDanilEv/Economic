@@ -17,16 +17,16 @@ namespace Economic_v2.ViewModels
 {
     public class CategoriesListViewViewModel : ViewModelBase
     {
+
         public CategoriesListViewViewModel()
         {
-
         }
 
         public void ReadCategories()   // get actual notes
         {
-            if (MainViewModel.CurrentUser.Categories == null)
-                MainViewModel.CurrentUser.Categories = new List<Category>();
-            List<Category> UserCategories = new List<Category>( MainViewModel.CurrentUser.Categories);
+            if (MainViewModel.GetContext.CurrentUser.Categories == null)
+                MainViewModel.GetContext.CurrentUser.Categories = new List<Category>();
+            List<Category> UserCategories = new List<Category>( MainViewModel.GetContext.CurrentUser.Categories);
            
             while (UserCategories.Count < 7)     //make empty notes to make minimem 10
             {
@@ -36,6 +36,11 @@ namespace Economic_v2.ViewModels
         }
 
         #region View
+        public void NotifyCategoryList()
+        {
+            NotifyPropertyChanged("CategoriesObs");
+        }
+
         public ObservableCollection<Category> CategoriesObs
         {
             get
@@ -81,9 +86,9 @@ namespace Economic_v2.ViewModels
         #region ImplementationCommand
         public void OnDeleteCategory(Category target)             //call via context
         {
-            MainViewModel.CurrentUser.Categories.RemoveAll(
+            MainViewModel.GetContext.CurrentUser.Categories.RemoveAll(
                 x => x.Id == target.Id);
-            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.CurrentUser);
+            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.GetContext.CurrentUser);
             UnitOfWorkSingleton.GetUnitOfWork.Save();
             NotifyPropertyChanged("CategoriesObs");
         }

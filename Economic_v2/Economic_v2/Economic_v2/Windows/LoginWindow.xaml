@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Login" Height="500" Width="350" 
         ResizeMode="NoResize" 
-        Name="LoginWindow"
+        Name="LWindow"
         WindowStartupLocation="CenterScreen" 
         Resources="{StaticResource MaterialDesign}"
         DataContext="{StaticResource LoginViewModel}"
@@ -17,7 +17,6 @@
     <Grid Background="#BFB3B9">
         <Border CornerRadius="240">
         </Border>
-
         <Rectangle Height="320" VerticalAlignment="Top" RadiusY="20" RadiusX="70" Margin="0,-20,0,0">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -33,13 +32,13 @@
             </Rectangle.Effect>
         </Rectangle>
         <Grid VerticalAlignment="Bottom" Margin="35,80" Height="240">
-            <Label Content="WELCOME" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="#FF332A8B" FontSize="28"/>
+            <Label Content="{Binding HeaderText}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="#FF332A8B" FontSize="28"/>
             <StackPanel VerticalAlignment="Center" Margin="15">
                 <TextBox Text="{Binding Login,Mode=OneWayToSource}" materialDesign:HintAssist.Hint="LOGIN" 
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines"
                          FontSize="20" Foreground="DimGray"/>
-                <Label Content="{Binding LoginError}" Margin="10 0 0 3" HorizontalAlignment="Right" FontSize="13" 
-                       Foreground="OrangeRed"/>
+                <Label Content="{Binding LoginError}" Margin="0,0,-0.4,3" HorizontalAlignment="Right" FontSize="13" 
+                       Foreground="OrangeRed" Width="120"/>
                 <Grid>
                     <TextBox IsTabStop="False" Margin="0 44 0 0" Height="10"/>
                     <PasswordBox x:Name="pwbox" PasswordChar="$" BorderThickness="0"  materialDesign:HintAssist.Hint="PASSWORD" 
@@ -53,25 +52,35 @@
                         </i:Interaction.Triggers>
                     </PasswordBox>
                 </Grid>
-                <Label Content="{Binding PasswordError}"  HorizontalAlignment="Right" FontSize="13" Foreground="OrangeRed"/>
+                <Label Content="{Binding PasswordError}"  HorizontalAlignment="Right" FontSize="13" Foreground="OrangeRed" Margin="0,0,-0.4,0" Width="120"/>
             </StackPanel>
         </Grid>
 
-        <Button Command="{Binding LogIn}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" 
-                     CommandParameter="{Binding ElementName=LoginWindow}" Content="LOGIN" Background="#FF0069C0"/>
-        <Button Command="{Binding Registrate}" BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Center" 
+        <Button Command="{Binding ConfirmButton}" Width="150" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" 
+                     CommandParameter="{Binding ElementName=LWindow}" Content="{Binding ConfirmButtonText}" Background="#FF0069C0"/>
+        <Button Command="{Binding Registrate_LoginButton}" BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Center" 
                 VerticalAlignment="Bottom" Margin="0,25" Height="35">
-            <TextBlock TextDecorations="Underline" Foreground="DimGray" FontSize="15" Text="Registration" ></TextBlock>
+            <TextBlock TextDecorations="Underline" Foreground="DimGray" FontSize="15" Text="{Binding Registrate_LoginButtonText}" ></TextBlock>
+        </Button>
+        <Button Command="{Binding ReestablishPassword}" BorderThickness="0" Background="{x:Null}" HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" Margin="0 0 90 27" Width="30" Height="30"
+                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                BorderBrush="{x:Null}" ToolTip="Reestablish password">
+            <materialDesign:PackIcon Kind="AccountQuestionMark"  Width="20" Height="20" VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
         </Button>
         <Button ToolTip="CLOSE WINDOW" Command="{Binding CloseWindow, Mode=OneWay}" 
-            CommandParameter="{Binding ElementName=LoginWindow}"  Template="{StaticResource CircButtons}"
+            CommandParameter="{Binding ElementName=LWindow}"  Template="{StaticResource CircButtons}"
             HorizontalAlignment="Center" Width="100" Height="100" VerticalAlignment="Top" Margin="30">
         </Button>
         <Button  Command="{Binding CloseWindow, Mode=OneWay}" 
-            CommandParameter="{Binding ElementName=LoginWindow}" 
+            CommandParameter="{Binding ElementName=LWindow}" 
             Background="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right"
             FontSize="20" BorderThickness="0" Height="40" Width="57">
             <materialDesign:PackIcon Kind="WindowClose" Height="25" Width="25" />
         </Button>
+        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" 
+                     Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top"
+                     Margin="0 30 0 0" Foreground="#00f2ff" Visibility="{Binding LoadVis}"/>
     </Grid>
 </Window>

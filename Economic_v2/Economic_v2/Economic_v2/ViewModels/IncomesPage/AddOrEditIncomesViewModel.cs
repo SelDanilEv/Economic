@@ -43,10 +43,12 @@ namespace Economic_v2.ViewModels
                 }
             }
 
+            NotifyPropertyChanged("IncomeName");
+            NotifyPropertyChanged("Money");
+            NotifyPropertyChanged("Date");
             NotifyPropertyChanged("IncomeNameError");
             NotifyPropertyChanged("MoneyError");
             NotifyPropertyChanged("DateError");
-            ClearFields = false;
         }
 
         public void IfCreate()
@@ -72,7 +74,6 @@ namespace Economic_v2.ViewModels
         #endregion
 
         #region View
-        public bool ClearFields = false;
 
         private string _incomeName;
         public string IncomeNameError { get; set; }
@@ -80,8 +81,6 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                if (ClearFields)       //if need clear
-                    new Task(() => Initial()).Start();
                 return _incomeName;
             }
             set
@@ -220,7 +219,6 @@ namespace Economic_v2.ViewModels
             {
                 if (SuccessfulValidation)
                 {
-                    ClearFields = true;
                     return ReturnedIncome;
                 }
                 return null;

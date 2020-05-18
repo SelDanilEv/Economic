@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Economic_v2.Models
 {
-    public class Node
+    public class Note
     {
         public int Id { get; set; }
         
         public string text { get; set; }
 
         #region constructors
-        public Node()
+        public Note()
         {
         }
 
-        public Node(string text)
+        public Note(string text)
         {
             this.text = text;
         }

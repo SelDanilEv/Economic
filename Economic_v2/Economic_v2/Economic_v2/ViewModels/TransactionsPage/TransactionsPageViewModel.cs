@@ -25,7 +25,7 @@ namespace Economic_v2.ViewModels
         }
 
         #region Controls
-        private UserControl userControl = new TransactionsListView();       //alterable usercontrol
+        private UserControl userControl;       //alterable usercontrol
 
 
         public UserControl TransactionPageControl        //handler alterable usercontrol
@@ -36,7 +36,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmTransactionCommand = new Command(OnConfirmCreateOrEditTransaction);
                     EditOrCancelTransactionCommand = new Command(OnCancelCreateOrEditTransaction);
-                    userControl = new AddOrEditTransaction();
+                    userControl = Model.AddOrEditView;
                     _editTransactionButton = "Cancel";
                     _createTransactionButton = "Confirm";
                 }
@@ -44,7 +44,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmTransactionCommand = new Command(OnCreateTransaction);
                     EditOrCancelTransactionCommand = new Command(OnEditTransaction);
-                    userControl = new TransactionsListView();
+                    userControl = Model.ListView;
                     _createTransactionButton = "Create Transaction";
                     _editTransactionButton = "Edit Transaction";
                 }
@@ -125,13 +125,13 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                return Model.ListContext.SelectedTransaction;
+                return TransactionsModel.ListContext.SelectedTransaction;
             }
         }
 
         public bool IsSelectedTransaction
         {
-            get => Model.ListContext.IsSelectedTransaction;
+            get => TransactionsModel.ListContext.IsSelectedTransaction;
         }
 
         public bool IsEndableButtonsEditAndDelete
@@ -238,12 +238,13 @@ namespace Economic_v2.ViewModels
 
         private void OnCreateTransaction()           //just turn on create user control
         {
+            new Task(() => TransactionsModel.AddOrEditContext.Initial()).Start();
             ChangeFlag();
         }
 
         private void OnConfirmCreateOrEditTransaction()           //confirm create or edit
         {
-            if (Model.AddOrEditContext.GetTransaction != null)
+            if (TransactionsModel.AddOrEditContext.GetTransaction != null)
             {
                 Model.ConfirmButton(IsEdit);
                 IsEdit = false;
@@ -256,17 +257,17 @@ namespace Economic_v2.ViewModels
         {
             if (IsSelectedTransaction)
             {
-                Model.AddOrEditContext.ClearFields = true;
                 IsEdit = true;
                 ChangeFlag();
+                new Task(() => TransactionsModel.AddOrEditContext.Initial()).Start();
             }
         }
 
         private void OnCancelCreateOrEditTransaction()               //if click cancel
         {
-            Model.AddOrEditContext.ClearFields = true;
             IsEdit = false;
             ChangeFlag();
+            new Task(() => TransactionsModel.AddOrEditContext.Initial()).Start();
         }
 
         private void OnDeleteTransaction()
@@ -278,6 +279,8 @@ namespace Economic_v2.ViewModels
                     return;
                 }
             }
+            if (SelectedTransaction.Id == 0)
+                return;
             if (IsSelectedTransaction)
             {
                 if (DismissButtonProgress > 0)

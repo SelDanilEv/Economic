@@ -13,8 +13,9 @@ namespace Economic_v2.Models
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
         public double Total_money { get; set; }
-        public double Free_money { get; set; }
+        public double Reserve_money { get; set; }
         [Column(TypeName = "date")]
         public DateTime Last_activity { get; set; }
 
@@ -25,7 +26,8 @@ namespace Economic_v2.Models
         public List<Income> Incomes{ get; set; }
         public List<Transaction> Transactions { get; set; }
         public List<AdjustmentContract> AdjustmentContracts { get; set; }
-        public Node Node { get; set; }
+        public Note Note { get; set; }
+        public Statistic  Statistic{ get; set; }
 
         #region constructors
         public User()
@@ -38,6 +40,8 @@ namespace Economic_v2.Models
             Password = password;
             Total_money = total_money;
             Last_activity = last_activity;
+            Statistic = new Statistic();
+            Note = new Note();
         }
         #endregion constructors
 

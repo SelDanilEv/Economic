@@ -5,13 +5,89 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Economic_v2"
       mc:Ignorable="d" 
+      DataContext="{StaticResource StatisticViewModel}"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Height="auto" Width="auto">
-
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ProgressBar" BasedOn="{StaticResource MaterialDesignCircularProgressBar}">
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Value" From="0"
+                                                                         Duration="0:0:1"></DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.8}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                <TextBlock Text="Statistic Page" FontSize="50" FontFamily="Cooper Black" Foreground="#FFC00000"/>
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=FadeIn, Duration=0:0:0.6}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <ProgressBar Height="280" Width="280" Value="{Binding IncomeProgressBar,Mode=OneWay}" Foreground="#8B008B" />
+                        <Grid>
+                            <ProgressBar Height="250" Width="250" Value="{Binding TargetProgressBar,Mode=OneWay}" Foreground="#FF68E843" />
+                            <ProgressBar Height="250" Width="250" Value="{Binding CategoryProgressBar,Mode=OneWay}" Foreground="#B22222" />
+                        </Grid>
+                    </Grid>
+                    
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="85 8 0 0">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#8B008B"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20">Incomes</TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="85 8 0 0">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#B22222"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20">Categories</TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="85 8 0 0">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#FF68E843"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20">Goals</TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Margin="10 20" Width="150" HorizontalAlignment="Center">
+                    <TextBlock Margin="0 20" Foreground="#FF0069C0" FontSize="25" TextWrapping="Wrap" TextAlignment="Center"
+                               HorizontalAlignment="Center" Text="The number of goals achieved"/>
+                    <Grid Height="10"></Grid>
+                    <TextBlock Foreground="#FF0069C0" FontSize="34" TextWrapping="Wrap" HorizontalAlignment="Center" Text="{Binding NumberOfGoals,Mode=OneWay}"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Grid>
+                        <ProgressBar Height="280" Width="280" Value="{Binding LargestTarget,Mode=OneWay}" Foreground="#8B008B" />
+                        <Grid>
+                            <ProgressBar Height="260" Width="260" Value="{Binding Target1,Mode=OneWay}" Foreground="#20B2AA" />
+                            <ProgressBar Height="240" Width="240" Value="{Binding Target2,Mode=OneWay}" Foreground="#B22222" />
+                            <ProgressBar Height="220" Width="220" Value="{Binding Target3,Mode=OneWay}" Foreground="#FF68E843" />
+                        </Grid>
+                    </Grid>
+
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="55 8 0 0">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#8B008B"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20" Text="{Binding LargestTargetName}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="55 8 0 0">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#20B2AA"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20" Text="{Binding Target1Name}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="55 8 0 0"  Visibility="{Binding Target2Vis}">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#B22222"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20" Text="{Binding Target2Name}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="55 8 0 0"  Visibility="{Binding Target3Vis}">
+                        <Rectangle Height="20" Width="20" Margin="5" Fill="#FF68E843"></Rectangle>
+                        <TextBlock VerticalAlignment="Center" Foreground="#FF0069C0" FontSize="20" Text="{Binding Target3Name}"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </materialDesign:TransitioningContent>
     </Grid>

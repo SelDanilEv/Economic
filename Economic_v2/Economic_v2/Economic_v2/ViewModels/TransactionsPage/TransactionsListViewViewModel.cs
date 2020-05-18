@@ -17,16 +17,17 @@ namespace Economic_v2.ViewModels
 {
     public class TransactionsListViewViewModel : ViewModelBase
     {
+
         public TransactionsListViewViewModel()
         {
-
         }
+
 
         public void ReadTransactions()   // get actual notes
         {
-            if (MainViewModel.CurrentUser.Transactions == null)
-                MainViewModel.CurrentUser.Transactions = new List<Transaction>();
-            List<Transaction> UserTransactions = new List<Transaction>( MainViewModel.CurrentUser.Transactions);
+            if (MainViewModel.GetContext.CurrentUser.Transactions == null)
+                MainViewModel.GetContext.CurrentUser.Transactions = new List<Transaction>();
+            List<Transaction> UserTransactions = new List<Transaction>( MainViewModel.GetContext.CurrentUser.Transactions);
            
             while (UserTransactions.Count < 7)     //make empty notes to make minimem 10
             {
@@ -36,6 +37,11 @@ namespace Economic_v2.ViewModels
         }
 
         #region View
+        public void NotifyTransactionList()
+        {
+            NotifyPropertyChanged("TransactionsObs");
+        }
+
         public ObservableCollection<Transaction> TransactionsObs
         {
             get
@@ -81,9 +87,9 @@ namespace Economic_v2.ViewModels
         #region ImplementationCommand
         public void OnDeleteTransaction(Transaction target)             //call via context
         {
-            MainViewModel.CurrentUser.Transactions.RemoveAll(
+            MainViewModel.GetContext.CurrentUser.Transactions.RemoveAll(
                 x => x.Id == target.Id);
-            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.CurrentUser);
+            UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.GetContext.CurrentUser);
             UnitOfWorkSingleton.GetUnitOfWork.Save();
             NotifyPropertyChanged("TransactionsObs");
         }

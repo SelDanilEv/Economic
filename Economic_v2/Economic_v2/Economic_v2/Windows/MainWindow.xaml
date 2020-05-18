@@ -13,19 +13,61 @@
         <StackPanel VerticalAlignment="Top">
             <Grid Background="#FF0069C0" Height="13"/>
             <Grid Margin="5">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="0 5 0 0">
+                    <TextBlock Background="#BFB3B9" FontFamily="Champagne &amp; Limousines" VerticalAlignment="Center"
+                               Foreground="#FF0069C0" FontSize="24">Free</TextBlock>
+                    <Grid Width="10"></Grid>
+                    <TextBlock Background="#BFB3B9" FontFamily="Champagne &amp; Limousines" Foreground="{Binding MoneyColor}"
+                       Text="{Binding Free_TotalMoney,Mode=OneWay}" FontSize="30" />
+                    <Grid Margin="5 0 0 0">
+                        <materialDesign:PackIcon Kind="AlertDecagramOutline" Foreground="#8B0000" Visibility="{Binding AttentionVisible}"  Width="30" Height="30"/>
+                    </Grid>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 0">
-                    <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0" Foreground="DimGray" >
+
+                    <Button Width="40" Height="40" Background="{x:Null}" 
+                            BorderBrush="{x:Null}" Padding="0" Foreground="DimGray" 
+                            materialDesign:HintAssist.Hint="Reload"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                            Command="{Binding MakeCalculateAndUpdate}">
+                        <materialDesign:PackIcon Kind="Reload"  Width="30" Height="30"/>
+                    </Button>
+                    <Grid >
+                        <materialDesign:PackIcon Width="40" Height="40" Visibility="{Binding FeatureVis}"
+                                  Kind="StandardDefinition" /></Grid>
+                    <Grid>
+                        <ToggleButton Foreground="#FF0069C0" Background="{x:Null}" 
+                                Style="{StaticResource MaterialDesignActionToggleButton}"
+                                      Command="{Binding ChangeMood}"
+                                >
+                            <ToggleButton.Content>
+                                <materialDesign:PackIcon Width="30" Height="30"
+                                   Kind="EmoticonHappy" />
+                            </ToggleButton.Content>
+                            <materialDesign:ToggleButtonAssist.OnContent>
+                                <materialDesign:PackIcon Width="30" Height="30"
+                                  Kind="EmoticonSad" />
+                            </materialDesign:ToggleButtonAssist.OnContent>
+                        </ToggleButton>
+                    </Grid>
+                    <Grid Width="20"></Grid>
+                    <Button Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}"
+                            Padding="0" Foreground="DimGray"
+                            Command="{Binding ShowNote}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                         <materialDesign:PackIcon Kind="NotePlus"  Width="30" Height="30"/>
                     </Button>
                     <Button Width="40" Height="40" Background="{x:Null}" 
                             BorderBrush="{x:Null}" Padding="0" Foreground="DimGray"
-                            Margin="0 0 20 0" Command="{Binding ShowSettings}">
+                            Command="{Binding ShowSettings}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                         <materialDesign:PackIcon Kind="Settings"   Width="30" Height="30"/>
                     </Button>
-                    <Button x:Name="ButtonFechar" Width="40" Height="40" Background="{x:Null}" BorderBrush="{x:Null}" Padding="0"
-                            Foreground="DarkSlateGray" Command="{Binding CloseApp}">
+                    <Grid Width="20"></Grid>
+                    <Button x:Name="ButtonFechar" Width="40" Height="40" Background="{x:Null}"
+                            BorderBrush="{x:Null}" Padding="0"
+                            Foreground="DarkSlateGray" Command="{Binding CloseApp}"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                         <materialDesign:PackIcon Kind="Power"   Width="30" Height="30"/>
                     </Button>
                 </StackPanel>
@@ -35,6 +77,8 @@
             <ContentControl Content="{Binding MainUserControl}"></ContentControl>
         </Grid>
         <Grid  Width="250" HorizontalAlignment="Left" Background="#FF222222">
+            <TextBlock FontFamily="Champagne &amp; Limousines" Foreground="#FF0069C0"
+                      Margin="35 25 0 530" Text="{Binding UserName}" FontSize="30"/>
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
                 <Grid x:Name="GridCursor" Margin="{Binding CursorPosition}" Background="#FF0069C0" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
             </materialDesign:TransitioningContent>
@@ -48,7 +92,7 @@
                 <ListViewItem Height="60">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Target" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Targets" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                        <TextBlock Text="Goals" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Height="60">

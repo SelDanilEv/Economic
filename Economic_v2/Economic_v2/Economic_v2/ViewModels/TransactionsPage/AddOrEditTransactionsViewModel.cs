@@ -11,6 +11,7 @@ using Economic_v2.Help;
 using System.Windows.Controls;
 using System.Threading.Tasks;
 using Economic_v2.Builders;
+using Economic_v2.Logic;
 
 namespace Economic_v2.ViewModels
 {
@@ -26,7 +27,7 @@ namespace Economic_v2.ViewModels
         {
             if (!TransactionsPageViewModel.IsEdit)   //make start settings
             {
-                ReturnedTransaction = new Transaction() {Date = DateTime.Now };
+                ReturnedTransaction = new Transaction() { Date = DateTime.Now };
                 IfCreate();
             }
             else
@@ -43,10 +44,12 @@ namespace Economic_v2.ViewModels
                 }
             }
 
+            NotifyPropertyChanged("TransactionName");
+            NotifyPropertyChanged("Spend");
+            NotifyPropertyChanged("Date");
             NotifyPropertyChanged("TransactionNameError");
             NotifyPropertyChanged("SpendError");
             NotifyPropertyChanged("DateError");
-            ClearFields = false;
         }
 
         public void IfCreate()
@@ -66,7 +69,6 @@ namespace Economic_v2.ViewModels
         #endregion
 
         #region View
-        public bool ClearFields = false;
 
         private string _transactionName;
         public string TransactionNameError { get; set; }
@@ -74,8 +76,6 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                if (ClearFields)       //if need clear
-                    new Task(() => Initial()).Start();
                 return _transactionName;
             }
             set
@@ -186,7 +186,6 @@ namespace Economic_v2.ViewModels
             {
                 if (SuccessfulValidation)
                 {
-                    ClearFields = true;
                     return ReturnedTransaction;
                 }
                 return null;

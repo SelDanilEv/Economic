@@ -11,6 +11,7 @@ using Economic_v2.Help;
 using System.Windows.Controls;
 using System.Threading.Tasks;
 using Economic_v2.Builders;
+using Economic_v2.Logic;
 
 namespace Economic_v2.ViewModels
 {
@@ -42,13 +43,19 @@ namespace Economic_v2.ViewModels
                     IfEdit();
                 }
             }
+            _timePriority = false;
 
+            NotifyPropertyChanged("TimePriority");
+            NotifyPropertyChanged("TargetName");
+            NotifyPropertyChanged("TotalSum");
+            NotifyPropertyChanged("CurrentSum");
+            NotifyPropertyChanged("Spend");
+            NotifyPropertyChanged("TargetTime");
             NotifyPropertyChanged("TargetNameError");
             NotifyPropertyChanged("TotalSumError");
             NotifyPropertyChanged("CurrentSumError");
             NotifyPropertyChanged("SpendError");
             NotifyPropertyChanged("TargetTimeError");
-            ClearFields = false;
         }
 
         public void IfCreate()
@@ -81,7 +88,9 @@ namespace Economic_v2.ViewModels
         #endregion
 
         #region View
-        public bool ClearFields = false;
+        private bool _timePriority = false;
+        public bool TimePriority { get => _timePriority; set => _timePriority = value; }
+
 
         private string _targetName;
         public string TargetNameError { get; set; }
@@ -89,8 +98,6 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                if (ClearFields)       //if need clear
-                    new Task(() => Initial()).Start();
                 return _targetName;
             }
             set
@@ -210,7 +217,15 @@ namespace Economic_v2.ViewModels
         #endregion
 
         #region GetTarget
-        public bool SuccessfulValidation => validateAll();
+        public bool SuccessfulValidation
+        {
+            get
+            {
+                if (_timePriority)
+                    return validateAllTime();
+                return validateAllSpend();
+            }
+        }
 
         private bool validateTargetName()
         {
@@ -243,7 +258,7 @@ namespace Economic_v2.ViewModels
                 }
             }
 
-            if (_totalSum <= 0)
+            if (_totalSum < 0)
             {
                 TotalSumError = "Total sum must be positive";
                 return false;
@@ -272,7 +287,7 @@ namespace Economic_v2.ViewModels
                 }
             }
 
-            if (_currentSum <= 0)
+            if (_currentSum < 0)
             {
                 CurrentSumError = "Current sum must be positive";
                 return false;
@@ -284,9 +299,9 @@ namespace Economic_v2.ViewModels
                 return false;
             }
 
-            if (_currentSum >= _totalSum)
+            if (_currentSum > _totalSum)
             {
-                CurrentSumError = "Current sum must be less than total sum";
+                CurrentSumError = "Current sum must be less or equal than total sum";
                 return false;
             }
 
@@ -307,7 +322,7 @@ namespace Economic_v2.ViewModels
                 }
             }
 
-            if (_spend <= 0)
+            if (_spend < 0)
             {
                 SpendError = "Monthly expenses must be positive";
                 return false;
@@ -319,9 +334,9 @@ namespace Economic_v2.ViewModels
                 return false;
             }
 
-            if (_spend >= _totalSum)
+            if (_spend > _totalSum)
             {
-                SpendError = "Monthly expenses must be less than total sum";
+                SpendError = "Monthly expenses must be less or equal than total sum";
                 return false;
             }
 
@@ -332,9 +347,14 @@ namespace Economic_v2.ViewModels
 
         private bool validateTargetTime()
         {
-            switch (DateTime.Compare(_targetTime, DateTime.Today))
+            switch (DateTime.Compare(_targetTime.Date, DateTime.Today.Date))
             {
                 case 1:
+                    if(_targetTime.Month== DateTime.Today.Month)
+                    {
+                        TargetTimeError = "Pick future month";
+                        return false;
+                    }
                     ReturnedTarget.setTargetTime(_targetTime);
                     TargetTimeError = null;
                     return true;
@@ -342,6 +362,34 @@ namespace Economic_v2.ViewModels
                     TargetTimeError = "Pick future date";
                     return false;
             }
+        }
+
+        public bool validateAllTime()
+        {
+            bool rv = validateTargetName() &&
+            validateTotalSum() &&
+            validateCurrentSum() &&
+            validateTargetTime();
+
+            NotifyPropertyChanged("TargetNameError");
+            NotifyPropertyChanged("TotalSumError");
+            NotifyPropertyChanged("CurrentSumError");
+            NotifyPropertyChanged("TargetTimeError");
+            return rv;
+        }
+
+        public bool validateAllSpend()
+        {
+            bool rv = validateTargetName() &&
+            validateTotalSum() &&
+            validateCurrentSum() &&
+            validateSpend();
+
+            NotifyPropertyChanged("TargetNameError");
+            NotifyPropertyChanged("TotalSumError");
+            NotifyPropertyChanged("CurrentSumError");
+            NotifyPropertyChanged("SpendError");
+            return rv;
         }
 
         public bool validateAll()
@@ -368,12 +416,16 @@ namespace Economic_v2.ViewModels
             {
                 if (SuccessfulValidation)
                 {
-                    ClearFields = true;
-                    return ReturnedTarget.Build();
+                    TargetCalcController controller = new TargetCalcController();
+                    if (_timePriority)
+                        return controller.CalculateTargetWithTime(ReturnedTarget.Build());
+                    else
+                        return controller.CalculateTargetWithSpend(ReturnedTarget.Build());
                 }
                 return null;
             }
         }
+
         #endregion
 
     }

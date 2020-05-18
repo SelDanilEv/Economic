@@ -25,7 +25,7 @@ namespace Economic_v2.ViewModels
         }
 
         #region Controls
-        private UserControl userControl = new IncomesListView();       //alterable usercontrol
+        private UserControl userControl;       //alterable usercontrol
 
 
         public UserControl IncomePageControl        //handler alterable usercontrol
@@ -36,7 +36,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmIncomeCommand = new Command(OnConfirmCreateOrEditIncome);
                     EditOrCancelIncomeCommand = new Command(OnCancelCreateOrEditIncome);
-                    userControl = new AddOrEditIncome();
+                    userControl = Model.AddOrEditView;
                     _editIncomeButton = "Cancel";
                     _createIncomeButton = "Confirm";
                 }
@@ -44,7 +44,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmIncomeCommand = new Command(OnCreateIncome);
                     EditOrCancelIncomeCommand = new Command(OnEditIncome);
-                    userControl = new IncomesListView();
+                    userControl = Model.ListView;
                     _createIncomeButton = "Create Income";
                     _editIncomeButton = "Edit Income";
                 }
@@ -125,13 +125,13 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                return Model.ListContext.SelectedIncome;
+                return IncomesModel.ListContext.SelectedIncome;
             }
         }
 
         public bool IsSelectedIncome
         {
-            get => Model.ListContext.IsSelectedIncome;
+            get => IncomesModel.ListContext.IsSelectedIncome;
         }
 
         public bool IsEndableButtonsEditAndDelete
@@ -238,12 +238,13 @@ namespace Economic_v2.ViewModels
 
         private void OnCreateIncome()           //just turn on create user control
         {
+            new Task(() => IncomesModel.AddOrEditContext.Initial()).Start();
             ChangeFlag();
         }
 
         private void OnConfirmCreateOrEditIncome()           //confirm create or edit
         {
-            if (Model.AddOrEditContext.GetIncome != null)
+            if (IncomesModel.AddOrEditContext.GetIncome != null)
             {
                 Model.ConfirmButton(IsEdit);
                 IsEdit = false;
@@ -256,17 +257,17 @@ namespace Economic_v2.ViewModels
         {
             if (IsSelectedIncome)
             {
-                Model.AddOrEditContext.ClearFields = true;
                 IsEdit = true;
                 ChangeFlag();
+                new Task(() => IncomesModel.AddOrEditContext.Initial()).Start();
             }
         }
 
         private void OnCancelCreateOrEditIncome()               //if click cancel
         {
-            Model.AddOrEditContext.ClearFields = true;
             IsEdit = false;
             ChangeFlag();
+            new Task(() => IncomesModel.AddOrEditContext.Initial()).Start();
         }
 
         private void OnDeleteIncome()
@@ -278,6 +279,8 @@ namespace Economic_v2.ViewModels
                     return;
                 }
             }
+            if (SelectedIncome.Id == 0)
+                return;
             if (IsSelectedIncome)
             {
                 if (DismissButtonProgress > 0)

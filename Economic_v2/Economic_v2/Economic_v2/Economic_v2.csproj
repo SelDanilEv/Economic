@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Decor\S.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
@@ -55,7 +58,26 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.5.0.0-preview.3.20214.6\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0-preview.3.20214.6\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.5.0.0-preview.3.20214.6\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0-preview.3.20214.6\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -79,12 +101,17 @@
     </ApplicationDefinition>
     <Compile Include="Commands\Command.cs" />
     <Compile Include="DataBaseLayer\EconoMiCDBContext.cs" />
+    <Compile Include="DataBaseLayer\Models\Note.cs" />
+    <Compile Include="DataBaseLayer\Models\Statistic.cs" />
+    <Compile Include="DataBaseLayer\Models\Tip.cs" />
     <Compile Include="DataBaseLayer\Models\Transaction.cs" />
     <Compile Include="DataBaseLayer\Repository.cs" />
     <Compile Include="DataBaseLayer\UnitOfWork.cs" />
     <Compile Include="DataBaseLayer\UnitOfWorkSingleton.cs" />
     <Compile Include="Help\FutureDateValidationRule.cs" />
     <Compile Include="Help\Help.cs" />
+    <Compile Include="Logic\Calculator.cs" />
+    <Compile Include="Logic\TargetCaclController.cs" />
     <Compile Include="Migrations\202005071323186_InitialCreate.cs" />
     <Compile Include="Migrations\202005071323186_InitialCreate.designer.cs">
       <DependentUpon>202005071323186_InitialCreate.cs</DependentUpon>
@@ -117,19 +144,38 @@
     <Compile Include="Migrations\202005111945537_And one more migration.designer.cs">
       <DependentUpon>202005111945537_And one more migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005140850561_Change user migration.cs" />
+    <Compile Include="Migrations\202005140850561_Change user migration.designer.cs">
+      <DependentUpon>202005140850561_Change user migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005151944281_Add statistic class.cs" />
+    <Compile Include="Migrations\202005151944281_Add statistic class.designer.cs">
+      <DependentUpon>202005151944281_Add statistic class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005161908092_Add tips.cs" />
+    <Compile Include="Migrations\202005161908092_Add tips.designer.cs">
+      <DependentUpon>202005161908092_Add tips.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005171411568_little rename.cs" />
+    <Compile Include="Migrations\202005171411568_little rename.designer.cs">
+      <DependentUpon>202005171411568_little rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005171741321_Add settings.cs" />
+    <Compile Include="Migrations\202005171741321_Add settings.designer.cs">
+      <DependentUpon>202005171741321_Add settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DataBaseLayer\Models\ActiveTarget.cs" />
     <Compile Include="DataBaseLayer\Models\Adjustment.cs" />
     <Compile Include="DataBaseLayer\Models\AdjustmentContract.cs" />
     <Compile Include="DataBaseLayer\Models\Category.cs" />
     <Compile Include="DataBaseLayer\Models\Income.cs" />
-    <Compile Include="DataBaseLayer\Models\Node.cs" />
     <Compile Include="DataBaseLayer\Models\OldTarget.cs" />
     <Compile Include="DataBaseLayer\Models\SuspendedTarget.cs" />
-    <Compile Include="Models\IncomesModel.cs" />
-    <Compile Include="Models\CategoriesModel.cs" />
-    <Compile Include="Models\TargetsModel.cs" />
-    <Compile Include="Models\TransactionsModel.cs" />
+    <Compile Include="Controllers\IncomesModel.cs" />
+    <Compile Include="Controllers\CategoriesModel.cs" />
+    <Compile Include="Controllers\TargetsModel.cs" />
+    <Compile Include="Controllers\TransactionsModel.cs" />
     <Compile Include="Pages\CategyPage\AddOrEditCategory.xaml.cs">
       <DependentUpon>AddOrEditCategory.xaml</DependentUpon>
     </Compile>
@@ -138,6 +184,9 @@
     </Compile>
     <Compile Include="Pages\CategyPage\CategoriesPage.xaml.cs">
       <DependentUpon>CategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotePage.xaml.cs">
+      <DependentUpon>NotePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\IncomePage\AddOrEditIncome.xaml.cs">
       <DependentUpon>AddOrEditIncome.xaml</DependentUpon>
@@ -177,6 +226,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\CategyPage\CategoriesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\NotePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -251,14 +304,20 @@
       <DependentUpon>TransactionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PasswordCoder\PasswordEncoder.cs" />
+    <Compile Include="Services\MailsService.cs" />
+    <Compile Include="Services\RandomGenerator.cs" />
+    <Compile Include="Services\StringValidator.cs" />
     <Compile Include="ViewModels\CategoryPage\AddOrEditCategoriesViewModel.cs" />
     <Compile Include="ViewModels\CategoryPage\CategoriesListViewViewModel.cs" />
     <Compile Include="ViewModels\CategoryPage\CategoriesPageViewModel.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\IncomesPage\AddOrEditIncomesViewModel.cs" />
     <Compile Include="ViewModels\IncomesPage\IncomesListViewViewModel.cs" />
     <Compile Include="ViewModels\IncomesPage\IncomesPageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\NotePageViewModel.cs" />
+    <Compile Include="ViewModels\StatisticViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\AddOrEditTargetsViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\TargetsPageViewModel.cs" />
     <Compile Include="ViewModels\TargetsPage\TargetsListViewViewModel.cs" />
@@ -313,6 +372,21 @@
     <EmbeddedResource Include="Migrations\202005111945537_And one more migration.resx">
       <DependentUpon>202005111945537_And one more migration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005140850561_Change user migration.resx">
+      <DependentUpon>202005140850561_Change user migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005151944281_Add statistic class.resx">
+      <DependentUpon>202005151944281_Add statistic class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005161908092_Add tips.resx">
+      <DependentUpon>202005161908092_Add tips.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005171411568_little rename.resx">
+      <DependentUpon>202005171411568_little rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005171741321_Add settings.resx">
+      <DependentUpon>202005171741321_Add settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -342,7 +416,11 @@
   <ItemGroup>
     <Resource Include="HelperRem.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Decor\S.ico">
+      <CustomToolNamespace>Decor</CustomToolNamespace>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0-ci981\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0-ci981\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -13,12 +13,14 @@ namespace Economic_v2.DataBaseLayer
         private NodeRepository nodeRepository;
         private CategoryRepository categoryRepository;
         private ActiveTargetRepository activeTargetRepository;
-        private OldTargetRepository  oldTargetRepository;
+        private OldTargetRepository oldTargetRepository;
         private SuspendedTargetRepository suspendedTargetRepository;
         private AdjustmentContractRepository adjustmentContractRepository;
         private AdjustmentRepository adjustmentRepository;
         private IncomeRepository incomeRepository;
         private TransactionRepository transactionRepository;
+        private StatisticRepository statisticRepository;
+        private TipRepository tipRepository;
 
         public UserRepository Users
         {
@@ -27,6 +29,16 @@ namespace Economic_v2.DataBaseLayer
                 if (userRepository == null)
                     userRepository = new UserRepository(db);
                 return userRepository;
+            }
+        }
+
+        public StatisticRepository Statistics
+        {
+            get
+            {
+                if (statisticRepository == null)
+                    statisticRepository = new StatisticRepository(db);
+                return statisticRepository;
             }
         }
 
@@ -59,7 +71,7 @@ namespace Economic_v2.DataBaseLayer
                 return adjustmentRepository;
             }
         }
-        
+
 
         public AdjustmentContractRepository AdjustmentContracts
         {
@@ -71,13 +83,23 @@ namespace Economic_v2.DataBaseLayer
             }
         }
 
-        public NodeRepository Nodes
+        public NodeRepository Notes
         {
             get
             {
                 if (nodeRepository == null)
                     nodeRepository = new NodeRepository(db);
                 return nodeRepository;
+            }
+        }
+
+        public TipRepository Tips
+        {
+            get
+            {
+                if (tipRepository == null)
+                    tipRepository = new TipRepository(db);
+                return tipRepository;
             }
         }
 
@@ -123,7 +145,11 @@ namespace Economic_v2.DataBaseLayer
 
         public void Save()
         {
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch { }
         }
 
         private bool disposed = false;

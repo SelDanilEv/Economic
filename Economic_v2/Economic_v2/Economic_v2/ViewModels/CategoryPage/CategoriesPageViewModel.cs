@@ -25,7 +25,7 @@ namespace Economic_v2.ViewModels
         }
 
         #region Controls
-        private UserControl userControl = new CategoriesListView();       //alterable usercontrol
+        private UserControl userControl;       //alterable usercontrol
 
 
         public UserControl CategoryPageControl        //handler alterable usercontrol
@@ -36,7 +36,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmCategoryCommand = new Command(OnConfirmCreateOrEditCategory);
                     EditOrCancelCategoryCommand = new Command(OnCancelCreateOrEditCategory);
-                    userControl = new AddOrEditCategory();
+                    userControl = Model.AddOrEditView;
                     _editCategoryButton = "Cancel";
                     _createCategoryButton = "Confirm";
                 }
@@ -44,7 +44,7 @@ namespace Economic_v2.ViewModels
                 {
                     CreateOrConfirmCategoryCommand = new Command(OnCreateCategory);
                     EditOrCancelCategoryCommand = new Command(OnEditCategory);
-                    userControl = new CategoriesListView();
+                    userControl = Model.ListView;
                     _createCategoryButton = "Create Category";
                     _editCategoryButton = "Edit Category";
                 }
@@ -125,13 +125,13 @@ namespace Economic_v2.ViewModels
         {
             get
             {
-                return Model.ListContext.SelectedCategory;
+                return CategoriesModel.ListContext.SelectedCategory;
             }
         }
 
         public bool IsSelectedCategory
         {
-            get => Model.ListContext.IsSelectedCategory;
+            get => CategoriesModel.ListContext.IsSelectedCategory;
         }
 
         public bool IsEndableButtonsEditAndDelete
@@ -238,12 +238,13 @@ namespace Economic_v2.ViewModels
 
         private void OnCreateCategory()           //just turn on create user control
         {
+            new Task(() => CategoriesModel.AddOrEditContext.Initial()).Start();
             ChangeFlag();
         }
 
         private void OnConfirmCreateOrEditCategory()           //confirm create or edit
         {
-            if (Model.AddOrEditContext.GetCategory != null)
+            if (CategoriesModel.AddOrEditContext.GetCategory != null)
             {
                 Model.ConfirmButton(IsEdit);
                 IsEdit = false;
@@ -256,17 +257,17 @@ namespace Economic_v2.ViewModels
         {
             if (IsSelectedCategory)
             {
-                Model.AddOrEditContext.ClearFields = true;
                 IsEdit = true;
                 ChangeFlag();
+                new Task(() => CategoriesModel.AddOrEditContext.Initial()).Start();
             }
         }
 
         private void OnCancelCreateOrEditCategory()               //if click cancel
         {
-            Model.AddOrEditContext.ClearFields = true;
             IsEdit = false;
             ChangeFlag();
+            new Task(() => CategoriesModel.AddOrEditContext.Initial()).Start();
         }
 
         private void OnDeleteCategory()
@@ -278,6 +279,8 @@ namespace Economic_v2.ViewModels
                     return;
                 }
             }
+            if (SelectedCategory.Id == 0)
+                return;
             if (IsSelectedCategory)
             {
                 if (DismissButtonProgress > 0)

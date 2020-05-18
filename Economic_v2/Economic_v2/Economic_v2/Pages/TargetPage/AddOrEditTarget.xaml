@@ -27,6 +27,10 @@
     <Grid Width="500">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:1}">
             <StackPanel Margin="10 50 0 0" Orientation="Vertical" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin=" 0 0 0 10">
+                    <TextBlock FontSize="24" Foreground="#FF0069C0">Time priority</TextBlock>
+                    <ToggleButton Margin="5 0 0 0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"  IsChecked="{Binding TimePriority}" />
+                </StackPanel>
                 <TextBox Width="300" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Target Name"
                     Text="{Binding TargetName,Mode=TwoWay}" />
                 <Label  Margin="15 0 0 0" Content="{Binding TargetNameError}" />

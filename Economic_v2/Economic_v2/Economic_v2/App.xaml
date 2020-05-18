@@ -7,8 +7,14 @@
         <local:MainViewModel x:Key="MainViewModel" />
         
         <local:LoginViewModel x:Key="LoginViewModel" />
+
+        <local:HomeViewModel x:Key="HomeViewModel" />
+
+        <local:NotePageViewModel x:Key="NotePageViewModel" />
         
         <local:SettingPageViewModel x:Key="SettingPageViewModel" />
+
+        <local:StatisticViewModel x:Key="StatisticViewModel" />
         
         <local:TargetsPageViewModel x:Key="TargetsPageViewModel" />
         <local:TargetsListViewViewModel x:Key="TargetsListViewViewModel" />
@@ -25,7 +31,8 @@
         <local:TransactionsPageViewModel x:Key="TransactionsPageViewModel" />
         <local:TransactionsListViewViewModel x:Key="TransactionsListViewViewModel" />
         <local:AddOrEditTransactionsViewModel x:Key="AddOrEditTransactionsViewModel" />
-        
+
+
         <ControlTemplate x:Key="CircButtons" TargetType="Button">
             <Border CornerRadius="50" Width="100" Height="100"  BorderThickness="0">
                 <ContentControl  HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -33,6 +40,7 @@
                 </ContentControl>
             </Border>
         </ControlTemplate>
+        
         <ResourceDictionary x:Key="MaterialDesign">
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

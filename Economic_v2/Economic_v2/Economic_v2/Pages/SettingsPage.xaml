@@ -5,15 +5,87 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Economic_v2"
       mc:Ignorable="d" 
-      Resources="{StaticResource MaterialDesign}"
       DataContext="{StaticResource SettingPageViewModel}"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Height="auto" Width="auto">
-
+      Height="500" Width="700">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Background" Value="{x:Null}" />
+                <Setter Property="Foreground" Value="Firebrick" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Indigo.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.8}">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
-                <TextBlock Text="{Binding TestString}" FontSize="50" FontFamily="Cooper Black" Foreground="#FFC00000"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <TextBlock FontSize="30" Foreground="#FF0069C0" Text="Change Password"></TextBlock>
+                        <TextBox Width="200" Margin="5 20 5 0" materialDesign:HintAssist.Hint="Old password"
+                    Text="{Binding OldPassword,Mode=TwoWay}" FontSize="18"/>
+                        <Label  Margin="35 0 0 0" Content="{Binding OldPasswordError}" />
+                        <TextBox Width="200" Margin="5 10 5 0" materialDesign:HintAssist.Hint="New password"
+                    Text="{Binding NewPassword,Mode=TwoWay}" FontSize="18"/>
+                        <Label  Margin="35 0 0 0" Content="{Binding NewPasswordError}" />
+                        <TextBox Width="200" Margin="5 10 5 0" materialDesign:HintAssist.Hint="Confirm password"
+                    Text="{Binding ConfirmNewPassword,Mode=TwoWay}" FontSize="18"/>
+                        <Label  Margin="35 0 0 0" Content="{Binding ConfirmNewPasswordError}" />
+                        <Button Margin="2 20" Width="195" Height="40" FontSize="24"
+                           Content="Change" Background="#FF0069C0"
+                           Command="{Binding ChangePassword}"
+                           materialDesign:ButtonAssist.CornerRadius="10"/>
+                    </StackPanel>
+                    <Grid Width="50"></Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="30" Foreground="#FF0069C0" TextAlignment="Center" Text="Total Money"></TextBlock>
+                            <TextBox  materialDesign:HintAssist.Hint="{Binding OldTotalMoney}"
+                                      Margin="5 20 5 0"
+                                        Text="{Binding NewTotalMoney,Mode=TwoWay}" FontSize="24" 
+                                          TextAlignment="Left" Width="150"/>
+                            <Label Content="{Binding NewTotalMoneyError}" Margin="35 0 0 0" />
+                            <Button Width="150" Height="40" FontSize="25"
+                           Content="Confirm" Background="#FF0069C0" Margin="2 20"
+                           Command="{Binding ChangeTotalMoney}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           materialDesign:ButtonAssist.CornerRadius="10"/>
+                        </StackPanel>
+                        <Grid Height="25"></Grid>
+                        <TextBlock FontSize="30" Foreground="#FF0069C0" HorizontalAlignment="Center" Text="Email" />
+                        <TextBox Width="200"  materialDesign:HintAssist.Hint="{Binding OldMail}" Margin="10 20 10 0"
+                    Text="{Binding Mail,Mode=TwoWay}" FontSize="22" />
+                        <Label Margin="35 0 0 0" Content="{Binding MailError}" />
+                        <Button  Width="150" Height="40" FontSize="25"
+                           Content="Confirm" Background="#FF0069C0" Margin="2 20"
+                           Command="{Binding ConfirmMail}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           materialDesign:ButtonAssist.CornerRadius="10"/>
+                    </StackPanel>
+                    <Grid Width="50"></Grid>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                Margin="0 -20">
+                        <TextBlock FontSize="24" Width="105" Foreground="#FF0069C0" 
+                                           HorizontalAlignment="Right" TextWrapping="Wrap" Text="Change account"
+                                           TextAlignment="Center"></TextBlock>
+                        <Button  VerticalAlignment="Top" HorizontalAlignment="Center"
+                            Height="60" Width="60" Background="{x:Null}" BorderThickness="0"
+                                 Command="{Binding ChangeAccount}"
+                                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                            <materialDesign:PackIcon Kind="Rotate3dVariant" Foreground="#1b28b5" 
+                                                 Height="60" Width="60"  VerticalAlignment="Center"
+                                                 HorizontalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+
+                </StackPanel>
             </StackPanel>
         </materialDesign:TransitioningContent>
     </Grid>
