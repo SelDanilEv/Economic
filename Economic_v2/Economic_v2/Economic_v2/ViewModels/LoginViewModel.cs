@@ -239,7 +239,7 @@ namespace Economic_v2.ViewModels
             {
                 if (CheckConnectionTask.Status == TaskStatus.Running)
                 {
-                    time = 202;
+                    time = 999;
                     Thread.Sleep(50);
                 }
                 time = 0;
@@ -257,7 +257,7 @@ namespace Economic_v2.ViewModels
             {
                 TurnOnLoadAnimation();
 
-                while (time < 200 && TargetUser == null)
+                while (time < 300 && TargetUser == null)
                 {
                     Thread.Sleep(50);
                     time++;
@@ -287,7 +287,7 @@ namespace Economic_v2.ViewModels
                                     NotifyPropertyChanged("LoginError");
                                     break;
                                 default:
-                                    if (time == 200)
+                                    if (time == 300)
                                     {
                                         LoginError = "No connection";
                                         NotifyPropertyChanged("LoginError");
@@ -311,7 +311,7 @@ namespace Economic_v2.ViewModels
                                     NotifyPropertyChanged("LoginError");
                                     break;
                                 default:
-                                    if (time == 200)
+                                    if (time == 300)
                                     {
                                         LoginError = "No connection";
                                         NotifyPropertyChanged("LoginError");
@@ -513,7 +513,7 @@ namespace Economic_v2.ViewModels
         {
             new Task(() =>
             {
-                Thread.Sleep(1060);
+                Thread.Sleep(1100);
                 OpenAccount();
                 isTry = false;
             }).Start();
@@ -603,7 +603,7 @@ namespace Economic_v2.ViewModels
             string genRandPassword = RandomGenerator.GetRandomString(6);
             TargetUser.Password = PasswordCoder.PasswordCoder.GetHash(genRandPassword);
             MailsService.SendEmailAsync(TargetUser.Email, "Reestablish Password","EconoMic",
-                "Hi user. Your new password for "+ TargetUser.Login+" is :"+ genRandPassword+"!\n"+
+                "Hi user. Your new password for "+ TargetUser.Login+" is : "+ genRandPassword+"      \n"+
                 "Thanks for using my app!\n\t\t(SD)");
             HeaderText = "Check email";
             NotifyPropertyChanged("HeaderText");

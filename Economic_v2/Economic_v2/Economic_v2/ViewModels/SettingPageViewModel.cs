@@ -343,6 +343,11 @@ namespace Economic_v2.ViewModels
 
         private void OnChangeAccount()
         {
+            new Task(()=>
+            {
+                UnitOfWorkSingleton.GetUnitOfWork.Users.Update(MainViewModel.GetContext.CurrentUser);
+                UnitOfWorkSingleton.GetUnitOfWork.Save();
+            }).Start();
             MainViewModel.mainWindow.Hide();
             MainViewModel.loginWindow.Show();
         }

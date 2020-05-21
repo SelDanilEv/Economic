@@ -21,7 +21,7 @@
     </UserControl.Resources>
     <Grid Width="500" Margin="5">
         <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:1}">
-                <ListView FontSize="17" Margin="20 40" MaxWidth="500" MaxHeight="400" SelectedItem="{Binding SelectedIncome}" ItemsSource="{Binding IncomesObs}">
+                <ListView FontSize="17" Margin="20 40" MaxWidth="500" MaxHeight="500" SelectedItem="{Binding SelectedIncome}" ItemsSource="{Binding IncomesObs}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Income Name" DisplayMemberBinding="{Binding IncomeName}" />

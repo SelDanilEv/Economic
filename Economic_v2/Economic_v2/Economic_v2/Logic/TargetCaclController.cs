@@ -61,7 +61,10 @@ namespace Economic_v2.Logic
             int month = target.TargetTime.Month - DateTime.Today.AddMonths(1).Month +
                 12 * (target.TargetTime.Year - DateTime.Today.Year);
 
-            target.Spend = RoundUp(neededMoney / month, 2);
+            if (neededMoney % month == 0)
+                target.Spend = RoundUp(neededMoney / month, 2);
+            else
+                target.Spend = RoundUp(neededMoney / month + 1, 2);
 
             return target;
         }

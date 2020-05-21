@@ -45,8 +45,8 @@ namespace Economic_v2.ViewModels
                     CreateOrConfirmTargetCommand = new Command(OnCreateTarget);
                     EditOrCancelTargetCommand = new Command(OnEditTarget);
                     userControl = Model.ListView;
-                    _createTargetButton = "Create Target";
-                    _editTargetButton = "Edit Target";
+                    _createTargetButton = "Create Goal";
+                    _editTargetButton = "Edit Goal";
                 }
                 NotifyPropertyChanged("CreateConfirmTargetButton");
                 NotifyPropertyChanged("EditCancelTargetButton");
@@ -113,7 +113,7 @@ namespace Economic_v2.ViewModels
             }
         }
 
-        private string _deleteTargetButton = "Delete Target";
+        private string _deleteTargetButton = "Delete Goal";
         public string DeleteTargetButton
         {
             get => _deleteTargetButton;
@@ -246,7 +246,7 @@ namespace Economic_v2.ViewModels
         {
             if (Model.AddOrEditContext.GetTarget != null)
             {
-                Model.ConfirmButton(IsEdit,Model.ListContext.Mode);
+                Model.ConfirmButton(IsEdit, Model.ListContext.Mode);
                 IsEdit = false;
                 ChangeFlag();
             }
@@ -279,8 +279,12 @@ namespace Economic_v2.ViewModels
                     return;
                 }
             }
-            if (SelectedTarget.Id == 0)
-                return;
+            if (SelectedTarget != null)
+            {
+                if (SelectedTarget.Id == 0)
+                    return;
+            }
+            else { return; }
             if (IsSelectedTarget)
             {
                 if (DismissButtonProgress > 0)

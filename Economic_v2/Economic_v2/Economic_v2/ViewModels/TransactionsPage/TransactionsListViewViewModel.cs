@@ -29,7 +29,7 @@ namespace Economic_v2.ViewModels
                 MainViewModel.GetContext.CurrentUser.Transactions = new List<Transaction>();
             List<Transaction> UserTransactions = new List<Transaction>( MainViewModel.GetContext.CurrentUser.Transactions);
            
-            while (UserTransactions.Count < 7)     //make empty notes to make minimem 10
+            while (UserTransactions.Count < 8)     //make empty notes to make minimem 10
             {
                 UserTransactions.Add(new Transaction("Empty",0,DateTime.Now));
             }

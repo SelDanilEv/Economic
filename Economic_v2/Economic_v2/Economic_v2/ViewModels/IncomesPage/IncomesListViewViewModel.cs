@@ -30,7 +30,7 @@ namespace Economic_v2.ViewModels
                 MainViewModel.GetContext.CurrentUser.Incomes = new List<Income>();
             List<Income> UserIncomes = new List<Income>( MainViewModel.GetContext.CurrentUser.Incomes);
            
-            while (UserIncomes.Count < 7)     //make empty notes to make minimem 10
+            while (UserIncomes.Count < 8)     //make empty notes to make minimem 8
             {
                 UserIncomes.Add(new Income("Empty",0,DateTime.Now.AddDays(1)));
             }
