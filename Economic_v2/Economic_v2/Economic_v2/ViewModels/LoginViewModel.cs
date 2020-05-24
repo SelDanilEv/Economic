@@ -64,6 +64,8 @@ namespace Economic_v2.ViewModels
             {
                 _pageMode = value;
 
+                TurnOffLoadAnimation();
+
                 switch (_pageMode)
                 {
                     case Mode.LogIn:
@@ -92,6 +94,17 @@ namespace Economic_v2.ViewModels
                         break;
                 }
 
+                _login = _password = "";
+
+                Application.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    if (pb != null)
+                        pb.Password = "";
+                });
+
+                NotifyPropertyChanged("Login");
+                NotifyPropertyChanged("Password");
+                NotifyPropertyChanged("HeaderText");
                 NotifyPropertyChanged("HeaderText");
                 NotifyPropertyChanged("ConfirmButtonText");
                 NotifyPropertyChanged("Registrate_LoginButtonText");
@@ -107,8 +120,8 @@ namespace Economic_v2.ViewModels
         public string ConfirmButtonText { get; set; }
         public string Registrate_LoginButtonText { get; set; }
 
-        private string _login;
-        private string _password;
+        private string _login="";
+        private string _password ="";
 
         public string Login
         {
@@ -172,6 +185,7 @@ namespace Economic_v2.ViewModels
             if (login == "")
             {
                 LoginError = "Login is empty";
+                NotifyPropertyChanged("LoginError");
                 return false;
             }
 
@@ -210,6 +224,7 @@ namespace Economic_v2.ViewModels
             if (_password == "")
             {
                 PasswordError = "Password is empty";
+                NotifyPropertyChanged("PasswordError");
                 return false;
             }
 
@@ -485,6 +500,7 @@ namespace Economic_v2.ViewModels
                                     LoginError = "Please try again";
                                     NotifyPropertyChanged("LoginError");
                                 }
+                                TurnOffLoadAnimation();
                             }).Start();
                         }
                         else
@@ -507,13 +523,14 @@ namespace Economic_v2.ViewModels
             {
                 PasswordError = "Wrong password";
                 NotifyPropertyChanged("PasswordError");
+                TurnOffLoadAnimation();
             }
         }
         public void HelpMethodWait()
         {
             new Task(() =>
             {
-                Thread.Sleep(1100);
+                Thread.Sleep(1090);
                 OpenAccount();
                 isTry = false;
             }).Start();
@@ -587,7 +604,7 @@ namespace Economic_v2.ViewModels
         {
             new Task(() =>
             {
-                if (TargetUser != null && TargetUser.Id > 0 && validateLogin(_login)&&validateEmail())
+                if (TargetUser != null && TargetUser.Id > 0 && validateLogin(_login) && validateEmail())
                 {
                     SendEmail();
                 }
@@ -602,9 +619,9 @@ namespace Economic_v2.ViewModels
         {
             string genRandPassword = RandomGenerator.GetRandomString(6);
             TargetUser.Password = PasswordCoder.PasswordCoder.GetHash(genRandPassword);
-            MailsService.SendEmailAsync(TargetUser.Email, "Reestablish Password","EconoMic",
-                "Hi user. Your new password for "+ TargetUser.Login+" is : "+ genRandPassword+"      \n"+
-                "Thanks for using my app!\n\t\t(SD)");
+            MailsService.SendEmail(TargetUser.Email, "Reestablish Password", "EconoMic",
+                "Hi user. Your new password for " + TargetUser.Login + " is : <i><strong>" + genRandPassword + "</strong></i><br>" +
+                "Thanks for using my app!<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;($D)");
             HeaderText = "Check email";
             NotifyPropertyChanged("HeaderText");
             UnitOfWorkSingleton.GetUnitOfWork.Users.Update(TargetUser);
@@ -634,126 +651,6 @@ namespace Economic_v2.ViewModels
             PageMode = Mode.ReestablishPassword;
             ClearFields();
         }
-
-
-
-
-        //public void OnLogIn(Window loginWindow)
-        //{
-        //    if (LoginWindow == null)          //initialization login window
-        //        LoginWindow = loginWindow;
-
-        //    LoginError = PasswordError = "";
-        //    User TargetUser = null;
-
-        //    if (_login != "" && _login != null)
-        //    {
-        //        if (Helper.users.Exists(x => x.Login == _login))    //check on exist
-        //        {
-        //            TargetUser = Helper.users.Find(x => x.Login == _login);          //set user
-        //        }
-        //        else
-        //        {
-        //            LoginError = "Login doesn't exist";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LoginError = "Login is empty";
-        //    }
-        //    if (_password != "" && _password != null)
-        //    {
-        //        if (TargetUser != null)
-        //        {
-        //            if (TargetUser.Password == PasswordCoder.PasswordCoder.GetHash(Password))             //check user password with input password
-        //            {
-        //                if (MainWindow == null)
-        //                    MainWindow = new MainWindow();
-
-        //                MainViewModel.GetContext.CurrentUser = TargetUser;
-
-        //                MainViewModel.GetContext._pages[0] = new HomePage();
-        //                MainViewModel.GetContext._pages[1] = new TargetsPage();
-        //                MainViewModel.GetContext._pages[2] = new CategoriesPage();
-        //                MainViewModel.GetContext._pages[3] = new IncomesPage();
-        //                MainViewModel.GetContext._pages[4] = new TransactionsPage();
-        //                MainViewModel.GetContext._pages[5] = new StatisticPage();
-        //                MainViewModel.GetContext._pages[6] = new SettingsPage();
-        //                MainViewModel.GetContext._pages[7] = new NotePage();
-
-        //                MainViewModel.GetContext.OnUpdateMainWindow();
-        //                if (MainViewModel.mainWindow == null)               //set static properties in main view-model
-        //                {
-        //                    MainViewModel.loginWindow = LoginWindow;
-        //                    MainViewModel.mainWindow = MainWindow;
-        //                }
-        //                MainViewModel.GetContext.UpdateInfo();
-
-        //                LoginWindow.Hide();
-        //                MainWindow.Show();
-        //            }
-        //            else
-        //            {
-        //                PasswordError = "Password is wrong";
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        PasswordError = "Password is empty";
-        //    }
-        //    NotifyPropertyChanged("LoginError");
-        //    NotifyPropertyChanged("PasswordError");
-        //}
-
-        //public void OnRegistrate()
-        //{
-        //    LoginError = PasswordError = "";
-        //    User TargetUser = null;
-        //    if (_login != "" && _login != null)
-        //    {
-        //        if (!Helper.users.Exists(x => x.Login == _login))       //check on existing
-        //        {
-        //            TargetUser = new User(_login, _password, 0, DateTime.Now);              //create new user object
-        //        }
-        //        else
-        //        {
-        //            LoginError = "Login exists";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        LoginError = "Login is empty";
-        //    }
-        //    if (_password != "" && _password != null)
-        //    {
-        //        if (TargetUser != null)
-        //        {
-        //            if (Password.Length >= 6)                   // validate password 
-        //            {
-        //                TargetUser.Password = PasswordCoder.PasswordCoder.GetHash(TargetUser.Password);
-        //                new Task(() =>
-        //                {
-        //                    unitOfWork.Users.Create(TargetUser);                          //push to database
-        //                    unitOfWork.Save();
-        //                    Helper.GetUsers();
-        //                }).Start();
-
-        //                MessageBox.Show($"{_login} is registered");
-        //            }
-        //            else
-        //            {
-        //                PasswordError = "Password is too short";
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        PasswordError = "Password is empty";
-        //    }
-        //    NotifyPropertyChanged("LoginError");
-        //    NotifyPropertyChanged("PasswordError");
-        //}
-        #endregion
     }
+    #endregion
 }

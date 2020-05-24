@@ -1,12 +1,8 @@
-﻿using Economic_v2.Builders;
-using Economic_v2.DataBaseLayer;
+﻿using Economic_v2.DataBaseLayer;
 using Economic_v2.Models;
 using Economic_v2.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Economic_v2.Logic
@@ -24,7 +20,7 @@ namespace Economic_v2.Logic
         public void MakeTransaction(User user, double spend)
         {
             user.Total_money -= spend;
-            Save(user); Set(user); Update();
+            Save(user); Set(user); UpdateView();
         }
 
         public void Calculate(User user)
@@ -50,7 +46,7 @@ namespace Economic_v2.Logic
                 Set(user);
                 Save(user);
             }
-            Update();
+            UpdateView();
         }
 
         private void Save(User user)
@@ -68,7 +64,7 @@ namespace Economic_v2.Logic
             MainViewModel.GetContext.CurrentUser = user;
         }
 
-        private void Update()
+        private void UpdateView()
         {
             MainViewModel.GetContext.UpdateInfo();
         }

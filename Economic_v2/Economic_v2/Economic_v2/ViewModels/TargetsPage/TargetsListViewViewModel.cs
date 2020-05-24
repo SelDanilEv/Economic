@@ -199,7 +199,9 @@ namespace Economic_v2.ViewModels
             if (target.CurrentSum == target.TotalSum)
             {
                 MainViewModel.GetContext.CurrentUser.Total_money -= target.TotalSum;
-                MainViewModel.GetContext.CurrentUser.Statistic.LargestTarget = target;
+                if (MainViewModel.GetContext.CurrentUser.Statistic.LargestTarget.TotalSum <
+                    target.TotalSum)
+                    MainViewModel.GetContext.CurrentUser.Statistic.LargestTarget = target;
                 MainViewModel.GetContext.CurrentUser.Statistic.CounterTargets++;
                 StatisticViewModel.GetContext.MakeCalculate();
             }

@@ -350,7 +350,7 @@ namespace Economic_v2.ViewModels
             switch (DateTime.Compare(_targetTime.Date, DateTime.Today.Date))
             {
                 case 1:
-                    if(_targetTime.Month== DateTime.Today.Month)
+                    if(_targetTime.Month== DateTime.Today.Month&&_targetTime.Year==DateTime.Now.Year)
                     {
                         TargetTimeError = "Pick future month";
                         return false;

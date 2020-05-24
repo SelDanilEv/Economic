@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Economic_v2.DataBaseLayer
+﻿namespace Economic_v2.DataBaseLayer
 {
     public class UnitOfWorkSingleton
     {
-        private UnitOfWorkSingleton()
-        {
-
-        }
+        private UnitOfWorkSingleton() { }
 
         private static object locker = new object();
 

@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Economic_v2.App" Collapsed="true">
+    <Position X="49.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Builders.TargetBuilder" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAgAACgAAAAgAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Builders\TargetBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Commands.RelayCommand&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Commands.Command" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Commands\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Models.CategoriesModel" Collapsed="true">
+    <Position X="55" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kgBACAAAAAIAAAAAAAQAAAAAiAAAABAQgQAEAAAAAAA=</HashCode>
+      <FileName>Controllers\CategoriesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.IncomesModel" Collapsed="true">
+    <Position X="49.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kgBAAAEAAAAAAAAAAAQAAAAAqAAAABAQgQAEAAAAAAA=</HashCode>
+      <FileName>Controllers\IncomesModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.TargetsModel" Collapsed="true">
+    <Position X="48" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kiBAAAAAAAAAAAAAAAQAAAAAiACAABAQgQAEAAAAgAA=</HashCode>
+      <FileName>Controllers\TargetsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.TransactionsModel" Collapsed="true">
+    <Position X="44.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kgBAAAAAACAAAAAAAAQIAAAAiAAAABAQgQAEAAAAAAA=</HashCode>
+      <FileName>Controllers\TransactionsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.ActiveTarget" Collapsed="true">
+    <Position X="6.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\ActiveTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Adjustment" Collapsed="true">
+    <Position X="56.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Adjustment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.AdjustmentContract" Collapsed="true">
+    <Position X="42.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACACAAAAAAAAAAAAAAAAAAACAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\AdjustmentContract.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Category">
+    <Position X="6.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAgACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Income" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIASAAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Income.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Note" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Note.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.OldTarget" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\OldTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Statistic" Collapsed="true">
+    <Position X="6.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Statistic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.SuspendedTarget" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\SuspendedTarget.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Target" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAACAAAAAAAACgABAIAAAgAAAAAAAAIAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Target.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Tip" Collapsed="true">
+    <Position X="51.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Tip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.Transaction">
+    <Position X="0.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAEAgAAAAAAIBAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Models\Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Models.User">
+    <Position X="4" Y="8" Width="1.5" />
+    <AssociationLine Name="ActiveTargets" Type="Economic_v2.Models.ActiveTarget" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="8.25" />
+        <Point X="5.5" Y="8.096" />
+        <Point X="6.75" Y="8.096" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AACCBAEAACAAAAAAAAAgAAAAAAAAUAACAAARIQEAAgA=</HashCode>
+      <FileName>DataBaseLayer\Models\User.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Statistic" />
+      <Property Name="Note" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Transactions" />
+      <Property Name="SuspendedTargets" />
+      <Property Name="OldTargets" />
+      <Property Name="Categories" />
+      <Property Name="Incomes" />
+      <Property Name="ActiveTargets" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.EconoMiCDBContext" Collapsed="true">
+    <Position X="53.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgBCAAAAAAAAAEAAAgAAAAABAAUEAAAAAAYAAAAgA=</HashCode>
+      <FileName>DataBaseLayer\EconoMiCDBContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.UserRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAARAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.StatisticRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.TransactionRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.NodeRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.TipRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.AdjustmentRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.AdjustmentContractRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.SuspendedTargetRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.ActiveTargetRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.OldTargetRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.CategoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.IncomeRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.UnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKgJKAgAiQQQAAGAAAgAAAAABAEUAAAAABAYIAABgA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.DataBaseLayer.UnitOfWorkSingleton" Collapsed="true">
+    <Position X="55" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAgAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\UnitOfWorkSingleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Help.FutureDateValidationRule" Collapsed="true">
+    <Position X="55" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Help\FutureDateValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Help.Helper" Collapsed="true">
+    <Position X="56.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Help\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Help.CreateHelper" Collapsed="true">
+    <Position X="51.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Help\Help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Logic.Calculator" Collapsed="true">
+    <Position X="51.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAEBAAAAADAAAAAAiQAACAAAABAEAAAAAA=</HashCode>
+      <FileName>Logic\Calculator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Logic.TargetCalcController" Collapsed="true">
+    <Position X="44.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEAEAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logic\TargetCaclController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Migrations.InitialCreate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005071323186_InitialCreate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.MSSQLTRY4" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005071326036_MSSQL TRY4.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.MSSQLTRY5" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005071335217_MSSQL TRY5.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.MSSQLTRY6" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005071357328_MSSQL TRY6.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.TryMirgNew1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005090839475_TryMirgNew1.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.TryMirgNew2" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005091513284_TryMirgNew2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.TryMirgNew3" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005101021150_TryMirgNew3.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Andonemoremigration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005111945537_And one more migration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Changeusermigration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005140850561_Change user migration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Addstatisticclass" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005151944281_Add statistic class.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Addtips" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005161908092_Add tips.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.littlerename" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005171411568_little rename.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Addsettings" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202005171741321_Add settings.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Migrations.Configuration" Collapsed="true">
+    <Position X="49.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Pages.AddOrEditCategory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\CategyPage\AddOrEditCategory.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.CategoriesListView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="53.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\CategyPage\CategoriesListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.CategoriesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\CategyPage\CategoriesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.HomePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.AddOrEditIncome" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\IncomePage\AddOrEditIncome.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.IncomesListView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\IncomePage\IncomesListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.IncomesPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\IncomePage\IncomesPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.NotePage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\NotePage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.SettingsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="51.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.StatisticPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="55" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\StatisticPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.AddOrEditTarget" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="48" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TargetPage\AddOrEditTarget.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.TargetsListView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TargetPage\TargetsListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.TargetsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TargetPage\TargetsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.AddOrEditTransaction" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="49.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TransactionPage\AddOrEditTransaction.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.TransactionsListView" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="42.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TransactionPage\TransactionsListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Pages.TransactionsPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="46.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\TransactionPage\TransactionsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.PasswordCoder.PasswordCoder" Collapsed="true">
+    <Position X="42.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>PasswordCoder\PasswordEncoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Properties.Resources" Collapsed="true">
+    <Position X="48" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Properties.Settings" Collapsed="true">
+    <Position X="49.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Services.MailsService" Collapsed="true">
+    <Position X="42.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\MailsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.Services.RandomGenerator" Collapsed="true">
+    <Position X="44.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\RandomGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.AddOrEditCategoriesViewModel" Collapsed="true">
+    <Position X="29" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAACAgAgRAAAAAAAQIBAQgACAAgAACAAIAAgAAAAA=</HashCode>
+      <FileName>ViewModels\CategoryPage\AddOrEditCategoriesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.CategoriesListViewViewModel" Collapsed="true">
+    <Position X="33.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAAAAAAAAASAAAAgAAAAAAAAAAEAAAAAABAAACQAA=</HashCode>
+      <FileName>ViewModels\CategoryPage\CategoriesListViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.CategoriesPageViewModel" Collapsed="true">
+    <Position X="38" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAJgAAMYJRCgAAAJAAQhACIBIIIAAQEAggAgAKAIg=</HashCode>
+      <FileName>ViewModels\CategoryPage\CategoriesPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.HomeViewModel" Collapsed="true">
+    <Position X="2" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAgAAGAAggAEhBAAAAAKAAAFEAoCAoQADoAQA=</HashCode>
+      <FileName>ViewModels\HomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.AddOrEditIncomesViewModel" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAEgQACAAQAIwAAAQAAAgAABADAAAMAIBAABA=</HashCode>
+      <FileName>ViewModels\IncomesPage\AddOrEditIncomesViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.IncomesListViewViewModel" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAEAAAAAAABAAAQAAAAQAAAQDAAAEAAAAA=</HashCode>
+      <FileName>ViewModels\IncomesPage\IncomesListViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.IncomesPageViewModel" Collapsed="true">
+    <Position X="15.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAhgAAIIAZAAUAMJgBQgAQKAAoIAQQVAgBAgAAIAI=</HashCode>
+      <FileName>ViewModels\IncomesPage\IncomesPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.LoginViewModel" Collapsed="true">
+    <Position X="20" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAQBAIwCAQIBBCARARAHAgCCYiAELARCASSQIGAQBEA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.MainViewModel" Collapsed="true">
+    <Position X="24.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAYhAQQAAOAALgoAQEgABACAhBAQIgAIISAQBACAQgA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.NotePageViewModel" Collapsed="true">
+    <Position X="26.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAQAAAAAAAAAAAAAAACICAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\NotePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.SettingPageViewModel" Collapsed="true">
+    <Position X="31.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAiCAAAHCBIghRACBFAEIAIAAMBCQAAgACAKIQQAACI=</HashCode>
+      <FileName>ViewModels\SettingPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.StatisticViewModel" Collapsed="true">
+    <Position X="35.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECYBAAAAQAAAFACAAEBABABAgQIgICEAQDAAgACK0AA=</HashCode>
+      <FileName>ViewModels\StatisticViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.AddOrEditTargetsViewModel" Collapsed="true">
+    <Position X="40.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oICAAAAAEgRCBiQABAQIFAagUBACAIgiAAIESAAAAAA=</HashCode>
+      <FileName>ViewModels\TargetsPage\AddOrEditTargetsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.TargetsListViewViewModel" Collapsed="true">
+    <Position X="4.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAoAAAwAAAgAAAAAACAAAAEAAAAAgABBIAAI=</HashCode>
+      <FileName>ViewModels\TargetsPage\TargetsListViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.TargetsPageViewModel" Collapsed="true">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAgAAKIARIgkAAJgAQgAAaACIAAAQWAgAEgQggAo=</HashCode>
+      <FileName>ViewModels\TargetsPage\TargetsPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.AddOrEditTransactionsViewModel" Collapsed="true">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAACAgQAAAAAAASIDAQgAAgAAAICAAIAAABAAAA=</HashCode>
+      <FileName>ViewModels\TransactionsPage\AddOrEditTransactionsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.TransactionsListViewViewModel" Collapsed="true">
+    <Position X="17.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIAAAAAAAAAAAAAAAIACAEAAgAAAAACAAAAIAA=</HashCode>
+      <FileName>ViewModels\TransactionsPage\TransactionsListViewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.TransactionsPageViewModel" Collapsed="true">
+    <Position X="22.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAkICMKERAECAAJACcgIIKCAIAgAQUggAAwAAAAA=</HashCode>
+      <FileName>ViewModels\TransactionsPage\TransactionsPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Economic_v2.ViewModels.ViewModelBase" Collapsed="true">
+    <Position X="21.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Economic_v2.Windows.LoginWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="56.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\LoginWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Economic_v2.Windows.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="44.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Economic_v2.DataBaseLayer.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="42.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAEAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>DataBaseLayer\Repository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

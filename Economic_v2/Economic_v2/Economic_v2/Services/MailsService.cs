@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+﻿using System.Configuration;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Economic_v2.Services
 {
     public class MailsService
     {
-        public static void SendEmailAsync(string emailTo, string title, string displayName, string htmlBody = "")
+        public static void SendEmail(string emailTo, string title, string displayName, string htmlBody = "")
         {
             (new Task(() =>
             {

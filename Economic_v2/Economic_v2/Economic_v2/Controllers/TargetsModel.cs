@@ -2,10 +2,7 @@
 using Economic_v2.DataBaseLayer;
 using Economic_v2.Pages;
 using Economic_v2.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Economic_v2.Models
